@@ -570,6 +570,116 @@
       color: var(--accent);
     }
 
+    /* WORKOUT BLOCKS */
+    .workout-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+    .block-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .block-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .block-title { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+    .block-badge {
+      font-size: 10px; font-weight: 700; color: var(--accent2);
+      background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 20px;
+    }
+    .ex-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .ex-row:last-child { border-bottom: none; }
+    .ex-svg { width: 48px; height: 48px; flex-shrink: 0; }
+    .ex-info { flex: 1; }
+    .ex-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .ex-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .ex-sets { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+    /* LOG */
+    .log-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; margin-top: 8px;
+    }
+    .log-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 0; border-bottom: 1px solid var(--border);
+    }
+    .log-row:last-child { border-bottom: none; }
+    .log-ico { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; }
+    .log-info { flex: 1; }
+    .log-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .log-detail { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .log-val { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
+    .strava-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; }
+    .strava-stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px; text-align: center;
+    }
+    .strava-val { font-size: 15px; font-weight: 800; color: var(--accent); }
+    .strava-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
+
+    /* HABIT TRACKER */
+    .habit-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 4px; padding: 4px 0 8px;
+    }
+    .habit-col { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .habit-day-lbl { font-size: 8px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1px; }
+    .habit-dot {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer;
+      border: 1.5px solid var(--border); background: var(--surface2);
+      transition: transform 0.1s, background 0.15s;
+    }
+    .habit-dot:active { transform: scale(0.88); }
+    .habit-dot.done { background: rgba(16,185,129,0.2); border-color: var(--accent2); }
+    .habit-dot.missed { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); }
+    .habit-dot.future { opacity: 0.25; cursor: default; }
+    .pillar-section { padding-top: 4px; }
+    .pillar-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .pillar-row:last-child { border-bottom: none; }
+    .pillar-ico { font-size: 20px; width: 26px; text-align: center; }
+    .pillar-info { flex: 1; }
+    .pillar-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .pillar-detail { font-size: 11px; color: var(--text-muted); }
+    .pillar-checks { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .hck {
+      min-width: 26px; height: 26px; border-radius: 7px;
+      border: 2px solid var(--border); background: var(--surface2);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--text-muted);
+      transition: all 0.15s; padding: 0 4px;
+    }
+    .hck.checked { background: rgba(16,185,129,0.2); border-color: var(--accent2); color: var(--accent2); }
+
+    /* HISTORIAL */
+    .hist-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .hist-row:last-child { border-bottom: none; }
+    .hist-date { font-size: 11px; font-weight: 700; color: var(--text-muted); width: 48px; flex-shrink: 0; }
+    .hist-dots { display: flex; gap: 4px; flex: 1; }
+    .hist-dot {
+      width: 26px; height: 26px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+    }
+    .hist-dot.done { background: rgba(16,185,129,0.2); border: 1px solid var(--accent2); }
+    .hist-dot.miss { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
+    .hist-dot.empty { background: var(--surface2); border: 1px solid var(--border); opacity: 0.5; }
+
     /* LIGHT MODE */
     body.light {
       --bg: #f1f5f9;
@@ -620,69 +730,301 @@
     <span class="chevron">▾</span>
   </div>
   <div class="section-body">
-    <div class="today-hero">
-      <div class="today-type">Recuperación activa</div>
-      <div class="today-title">Caminata con inclinación</div>
-      <div class="today-desc">
-        Ayer fue un esfuerzo fuerte — HR max 186, zona 4 sostenida. Hoy el sistema necesita flujo sin carga. Nada de correr.
-      </div>
+    <div class="today-hero" style="background:linear-gradient(135deg,#0c1f3f 0%,#0f2a1e 100%);">
+      <div class="today-type">Mañana — Sábado 5 Abr</div>
+      <div class="today-title">Piernas · Pull · Core · Sauna</div>
+      <div class="today-desc">4 bloques · ~75 min total · Sin cafeína</div>
       <div class="workout-metrics">
         <div class="metric-card">
-          <div class="metric-label">Duración</div>
-          <div class="metric-value">30 <span class="metric-unit">min</span></div>
+          <div class="metric-label">Bloques</div>
+          <div class="metric-value">4</div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">Inclinación</div>
-          <div class="metric-value">5–8 <span class="metric-unit">%</span></div>
+          <div class="metric-label">Total aprox</div>
+          <div class="metric-value">75 <span class="metric-unit">min</span></div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">Zona HR objetivo</div>
+          <div class="metric-label">Cardio</div>
           <div class="metric-value" style="color:var(--z2)">Z2</div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">HR target</div>
-          <div class="metric-value">120–140 <span class="metric-unit">bpm</span></div>
+          <div class="metric-label">Cafeína</div>
+          <div class="metric-value" style="color:var(--danger);font-size:14px;">NO ☕</div>
         </div>
       </div>
     </div>
 
-    <div class="today-protocols" style="margin-top:12px;">
-      <div class="protocol-row">
-        <div class="protocol-icon">🔥</div>
-        <div class="protocol-info">
-          <div class="protocol-name">Sauna</div>
-          <div class="protocol-detail">Post-workout · 100°C</div>
-        </div>
-        <div class="protocol-badge">20 min</div>
+    <!-- BLOQUE 1: Piernas -->
+    <div class="workout-block">
+      <div class="block-header">
+        <div class="block-num">1</div>
+        <div class="block-title">Piernas — Caminadora</div>
+        <div class="block-badge">25 min</div>
       </div>
-      <div class="protocol-row">
-        <div class="protocol-icon">🧊</div>
-        <div class="protocol-info">
-          <div class="protocol-name">Agua fría</div>
-          <div class="protocol-detail">Después del sauna · lo más fría posible</div>
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="39" width="40" height="4" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.2"/>
+          <line x1="6" y1="39" x2="42" y2="33" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
+          <circle cx="33" cy="9" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="33" y1="13" x2="30" y2="23" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="31" y1="17" x2="25" y2="21" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="31" y1="17" x2="37" y2="19" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="30" y1="23" x2="24" y2="32" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="32" x2="21" y2="38" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="30" y1="23" x2="35" y2="30" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="35" y1="30" x2="37" y2="36" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Inclinación progresiva</div>
+          <div class="ex-detail">5×5 min · 4% → 6% → 8% → 10% → 3% cooldown</div>
+          <div class="ex-detail" style="margin-top:3px;color:var(--accent);">Velocidad: 5.5–6 km/h constante</div>
         </div>
-        <div class="protocol-badge blue">2 min</div>
       </div>
-      <div class="protocol-row">
-        <div class="protocol-icon">💊</div>
-        <div class="protocol-info">
-          <div class="protocol-name">Creatina</div>
-          <div class="protocol-detail">Post-workout con agua</div>
-        </div>
-        <div class="protocol-badge green">5g</div>
+      <div style="display:flex;gap:3px;margin-top:8px;border-radius:6px;overflow:hidden;height:26px;">
+        <div style="flex:1;background:rgba(59,130,246,0.25);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#93c5fd;">4%</div>
+        <div style="flex:1;background:rgba(59,130,246,0.4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#93c5fd;">6%</div>
+        <div style="flex:1;background:rgba(59,130,246,0.58);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#bfdbfe;">8%</div>
+        <div style="flex:1;background:rgba(59,130,246,0.78);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#eff6ff;">10%</div>
+        <div style="flex:1;background:rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#6ee7b7;">3%↓</div>
       </div>
-      <div class="protocol-row">
-        <div class="protocol-icon">🌙</div>
-        <div class="protocol-info">
-          <div class="protocol-name">Magnesio</div>
-          <div class="protocol-detail">Citrato · antes de dormir</div>
+    </div>
+
+    <!-- BLOQUE 2: Pull/Espalda -->
+    <div class="workout-block">
+      <div class="block-header">
+        <div class="block-num" style="background:var(--accent2)">2</div>
+        <div class="block-title">Pull / Espalda</div>
+        <div class="block-badge">Macro series ×4</div>
+      </div>
+      <!-- Jalón polea -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <line x1="8" y1="6" x2="40" y2="6" stroke="#3b82f6" stroke-width="2"/>
+          <line x1="14" y1="6" x2="16" y2="14" stroke="#475569" stroke-width="1"/>
+          <line x1="34" y1="6" x2="32" y2="14" stroke="#475569" stroke-width="1"/>
+          <circle cx="24" cy="17" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="21" x2="24" y2="33" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="23" x2="16" y2="14" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="23" x2="32" y2="14" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="33" x2="32" y2="33" stroke="#475569" stroke-width="1.5"/>
+          <line x1="24" y1="33" x2="18" y2="43" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="33" x2="30" y2="43" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Jalón polea</div>
+          <div class="ex-detail">Agarre ancho · bajar a clavícula</div>
         </div>
-        <div class="protocol-badge purple">400mg</div>
+        <div class="ex-sets">4×12</div>
+      </div>
+      <!-- Remo mancuerna -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <circle cx="36" cy="10" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="36" y1="14" x2="20" y2="24" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="28" y1="19" x2="22" y2="30" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="28" y1="19" x2="36" y2="28" stroke="#10b981" stroke-width="1.5"/>
+          <rect x="34" y="26" width="9" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
+          <line x1="20" y1="24" x2="17" y2="36" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="20" y1="24" x2="26" y2="36" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Remo mancuerna</div>
+          <div class="ex-detail">Apoyo en banco · codo al techo</div>
+        </div>
+        <div class="ex-sets">4×12</div>
+      </div>
+      <!-- Face pulls -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <rect x="38" y="19" width="6" height="9" rx="1" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
+          <line x1="38" y1="21" x2="28" y2="21" stroke="#475569" stroke-width="1"/>
+          <line x1="38" y1="27" x2="28" y2="27" stroke="#475569" stroke-width="1"/>
+          <circle cx="16" cy="10" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="14" x2="16" y2="30" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="19" x2="28" y2="21" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="19" x2="28" y2="27" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="30" x2="12" y2="42" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="16" y1="30" x2="20" y2="42" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Face pulls</div>
+          <div class="ex-detail">Polea alta · codos arriba · hacia la cara</div>
+        </div>
+        <div class="ex-sets">4×12</div>
+      </div>
+      <!-- Curl martillo -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="8" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="12" x2="24" y2="28" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="16" x2="14" y2="26" stroke="#10b981" stroke-width="1.5"/>
+          <rect x="10" y="25" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
+          <line x1="24" y1="16" x2="32" y2="22" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="32" y1="22" x2="30" y2="14" stroke="#10b981" stroke-width="1.5"/>
+          <rect x="28" y="11" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
+          <line x1="24" y1="28" x2="20" y2="42" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="24" y1="28" x2="28" y2="42" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Curl martillo</div>
+          <div class="ex-detail">Agarre neutro · sin balanceo</div>
+        </div>
+        <div class="ex-sets">4×12</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 3: Core -->
+    <div class="workout-block">
+      <div class="block-header">
+        <div class="block-num" style="background:var(--warn)">3</div>
+        <div class="block-title">Core</div>
+        <div class="block-badge">5 min · 2 rondas</div>
+      </div>
+      <!-- Plancha frontal -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <line x1="4" y1="40" x2="44" y2="40" stroke="#475569" stroke-width="1.5"/>
+          <line x1="8" y1="28" x2="38" y2="28" stroke="#10b981" stroke-width="2.5"/>
+          <circle cx="40" cy="25" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="12" y1="28" x2="10" y2="39" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="18" y1="28" x2="16" y2="39" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="8" y1="28" x2="6" y2="39" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Plancha frontal</div>
+          <div class="ex-detail">Antebrazos · espalda recta</div>
+        </div>
+        <div class="ex-sets">45 seg ×2</div>
+      </div>
+      <!-- Plancha lateral -->
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <line x1="4" y1="40" x2="44" y2="40" stroke="#475569" stroke-width="1.5"/>
+          <line x1="8" y1="36" x2="38" y2="22" stroke="#10b981" stroke-width="2.5"/>
+          <circle cx="40" cy="19" r="4" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="10" y1="35" x2="6" y2="40" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="22" y1="30" x2="26" y2="21" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="8" y1="36" x2="6" y2="40" stroke="#10b981" stroke-width="1.5"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Plancha lateral</div>
+          <div class="ex-detail">Cada lado</div>
+        </div>
+        <div class="ex-sets">30 seg ×2</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 4: Sauna + Frío -->
+    <div class="workout-block" style="border-color:rgba(239,68,68,0.35);background:rgba(239,68,68,0.05);">
+      <div class="block-header">
+        <div class="block-num" style="background:#ef4444">4</div>
+        <div class="block-title">Sauna + Frío</div>
+        <div class="block-badge" style="color:#f87171;background:rgba(239,68,68,0.15);">22 min</div>
+      </div>
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="20" width="36" height="22" rx="3" stroke="#ef4444" stroke-width="1.5" fill="rgba(239,68,68,0.1)"/>
+          <circle cx="24" cy="28" r="4" stroke="#f87171" stroke-width="1.5"/>
+          <line x1="24" y1="32" x2="24" y2="38" stroke="#f87171" stroke-width="1.5"/>
+          <line x1="24" y1="38" x2="16" y2="38" stroke="#f87171" stroke-width="1.5"/>
+          <line x1="24" y1="38" x2="32" y2="38" stroke="#f87171" stroke-width="1.5"/>
+          <path d="M10 14 Q12 10 10 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+          <path d="M18 14 Q20 10 18 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+          <path d="M26 14 Q28 10 26 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Sauna</div>
+          <div class="ex-detail">100°C · post-workout</div>
+        </div>
+        <div class="ex-sets" style="color:#f87171;">20 min</div>
+      </div>
+      <div class="ex-row">
+        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4 C14 12 10 20 14 28 C16 34 20 38 24 40 C28 38 32 34 34 28 C38 20 34 12 24 4Z" stroke="#60a5fa" stroke-width="1.5" fill="rgba(59,130,246,0.12)"/>
+          <path d="M19 16 C15 21 16 28 20 32" stroke="#93c5fd" stroke-width="1" fill="none"/>
+          <path d="M24 40 L21 44 L27 44 Z" fill="#60a5fa" opacity="0.6"/>
+        </svg>
+        <div class="ex-info">
+          <div class="ex-name">Agua fría</div>
+          <div class="ex-detail">Ducha · lo más fría posible</div>
+        </div>
+        <div class="ex-sets" style="color:#60a5fa;">2 min</div>
       </div>
     </div>
 
     <div class="note-card" style="margin-top:12px;">
-      ⚡ Sin cafeína hoy — no es día de intensidad. Dejar que el sistema nervioso se regule.
+      ☕ Sin cafeína mañana — no es día de alta intensidad. Sistema nervioso tranquilo.
+    </div>
+  </div>
+</section>
+
+<!-- ======= LOG HOY — VIE 4 ABR ======= -->
+<section>
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-title" style="color:#a78bfa">Log — Vie 4 Abr ✓</span>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Lo que hiciste hoy 💪</div>
+    <div class="log-card">
+      <div class="log-row">
+        <div class="log-ico">🚶</div>
+        <div class="log-info">
+          <div class="log-name">Caminata</div>
+          <div class="log-detail">Inclinación 5.5 · 8 km/h</div>
+        </div>
+        <div class="log-val">20 min</div>
+      </div>
+      <div class="log-row">
+        <div class="log-ico">🏃</div>
+        <div class="log-info">
+          <div class="log-name">Trote</div>
+          <div class="log-detail">Breve esfuerzo</div>
+        </div>
+        <div class="log-val">1 min</div>
+      </div>
+      <div class="log-row">
+        <div class="log-ico">💪</div>
+        <div class="log-info">
+          <div class="log-name">Fuerza — Macro series ×4</div>
+          <div class="log-detail">Press pecho máq. (5→4→3 series) · Pecho banco inclinado · Bíceps · Tríceps</div>
+        </div>
+        <div class="log-val">×4</div>
+      </div>
+      <div class="log-row">
+        <div class="log-ico">🧘</div>
+        <div class="log-info">
+          <div class="log-name">Plancha</div>
+          <div class="log-detail">Con pausas</div>
+        </div>
+        <div class="log-val">3 min</div>
+      </div>
+      <div class="log-row">
+        <div class="log-ico">🔥</div>
+        <div class="log-info">
+          <div class="log-name">Sauna</div>
+          <div class="log-detail">100°C</div>
+        </div>
+        <div class="log-val">10 min</div>
+      </div>
+    </div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:14px 0 6px;">Strava</div>
+    <div class="strava-row">
+      <div class="strava-stat">
+        <div class="strava-val">2 km</div>
+        <div class="strava-lbl">Run</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 141</div>
+      </div>
+      <div class="strava-stat">
+        <div class="strava-val">11 min</div>
+        <div class="strava-lbl">Weights</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 135</div>
+      </div>
+      <div class="strava-stat">
+        <div class="strava-val">10 min</div>
+        <div class="strava-lbl">Workout</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 120</div>
+      </div>
     </div>
   </div>
 </section>
@@ -744,10 +1086,10 @@
       <div class="day-row">
         <div class="day-label">Sáb</div>
         <div class="day-content">
-          <div class="day-name">Long run</div>
-          <div class="day-detail">45–50 min · pace cómodo, no importa el tiempo</div>
+          <div class="day-name">Piernas + Pull + Core</div>
+          <div class="day-detail">Caminadora 25 min inclinación · Pull ×4 · Core 5 min · Sauna 20 min</div>
         </div>
-        <div class="day-zone z2-tag">Z2</div>
+        <div class="day-zone z3-tag">Z2–3</div>
       </div>
 
       <div class="day-row">
@@ -1007,6 +1349,106 @@
   </div>
 </section>
 
+<!-- ======= HABIT TRACKER ======= -->
+<section>
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-title green">Habit Tracker</span>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:4px 0 6px;">Semana actual</div>
+    <div class="habit-grid" id="habit-week-grid"><!-- JS --></div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:14px;margin-bottom:2px;">Hoy — <span id="habit-today-label"></span></div>
+    <div class="pillar-section">
+      <div class="pillar-row">
+        <div class="pillar-ico">🏃</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Ejercicio</div>
+          <div class="pillar-detail">tipo + duración</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('ejercicio')" id="hck-ejercicio">✓</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">🔥</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Sauna</div>
+          <div class="pillar-detail">20 min objetivo</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('sauna')" id="hck-sauna">✓</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">🧊</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Frío</div>
+          <div class="pillar-detail">Ducha fría 2 min</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('frio')" id="hck-frio">✓</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">💊</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Levetiracetam 1g</div>
+          <div class="pillar-detail">AM + PM</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('leve_am')" id="hck-leve_am">AM</div>
+          <div class="hck" onclick="toggleHabit('leve_pm')" id="hck-leve_pm">PM</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">🧪</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Suplementos</div>
+          <div class="pillar-detail">Creatina · Magnesio · Cafeína</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('creatina')" id="hck-creatina">CR</div>
+          <div class="hck" onclick="toggleHabit('magnesio')" id="hck-magnesio">MG</div>
+          <div class="hck" onclick="toggleHabit('cafeina')" id="hck-cafeina">CAF</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">💼</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Trabajo</div>
+          <div class="pillar-detail">Horas productivas</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('trabajo')" id="hck-trabajo">✓</div>
+        </div>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-ico">❤️</div>
+        <div class="pillar-info">
+          <div class="pillar-name">Familia / Pareja</div>
+          <div class="pillar-detail">Tiempo personal</div>
+        </div>
+        <div class="pillar-checks">
+          <div class="hck" onclick="toggleHabit('personal')" id="hck-personal">✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HISTORIAL 7 DÍAS ======= -->
+<section>
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-title amber">Historial 7 días</span>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Pilares completados por día</div>
+    <div id="hist-container"><!-- JS --></div>
+  </div>
+</section>
+
 <script>
   function toggleTheme() {
     const body = document.body;
@@ -1032,6 +1474,119 @@
       body.style.display = 'none';
     }
   }
+
+  // ======= HABIT TRACKER =======
+  const HABIT_KEYS = ['ejercicio','sauna','frio','leve_am','leve_pm','creatina','magnesio','cafeina','trabajo','personal'];
+  const PILLAR_ICONS = ['🏃','🔥','🧊','💊','🧪','💼','❤️'];
+  const PILLAR_KEYS  = [['ejercicio'],['sauna'],['frio'],['leve_am','leve_pm'],['creatina','magnesio','cafeina'],['trabajo'],['personal']];
+  const DAY_LABELS   = ['D','L','M','X','J','V','S'];
+
+  function dateKey(d) { return d.toISOString().split('T')[0]; }
+  function todayKey() { return dateKey(new Date()); }
+
+  function loadDay(dk) {
+    try { return JSON.parse(localStorage.getItem('habits_' + dk)) || {}; } catch(e) { return {}; }
+  }
+  function saveDay(dk, data) {
+    localStorage.setItem('habits_' + dk, JSON.stringify(data));
+  }
+
+  function toggleHabit(key) {
+    const dk = todayKey();
+    const data = loadDay(dk);
+    data[key] = data[key] === 'done' ? null : 'done';
+    saveDay(dk, data);
+    renderTodayHabits();
+    renderWeekGrid();
+    renderHistorial();
+  }
+
+  function renderTodayHabits() {
+    const dk = todayKey();
+    const data = loadDay(dk);
+    const today = new Date();
+    const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const lbl = document.getElementById('habit-today-label');
+    if (lbl) lbl.textContent = days[today.getDay()] + ' ' + today.getDate();
+    HABIT_KEYS.forEach(k => {
+      const el = document.getElementById('hck-' + k);
+      if (el) el.classList.toggle('checked', data[k] === 'done');
+    });
+  }
+
+  function renderWeekGrid() {
+    const grid = document.getElementById('habit-week-grid');
+    if (!grid) return;
+    const today = new Date();
+    const todayStr = dateKey(today);
+    const dow = today.getDay();
+    // Monday-based week
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
+    let html = '';
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      const dk = dateKey(d);
+      const data = loadDay(dk);
+      const isFuture = dk > todayStr;
+      const isToday = dk === todayStr;
+      let pillars = '';
+      PILLAR_ICONS.forEach((icon, pi) => {
+        const keys = PILLAR_KEYS[pi];
+        const done = keys.every(k => data[k] === 'done');
+        const any  = keys.some(k => data[k] === 'done');
+        let cls = 'habit-dot';
+        if (isFuture) cls += ' future';
+        else if (done || any) cls += ' done';
+        else cls += ' missed';
+        pillars += `<div class="${cls}">${icon}</div>`;
+      });
+      html += `<div class="habit-col">
+        <div class="habit-day-lbl" style="${isToday ? 'color:var(--accent)' : ''}">${DAY_LABELS[(i+1)%7]}</div>
+        ${pillars}
+      </div>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  function renderHistorial() {
+    const container = document.getElementById('hist-container');
+    if (!container) return;
+    const today = new Date();
+    const todayStr = dateKey(today);
+    const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    let html = '';
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      const dk = dateKey(d);
+      const data = loadDay(dk);
+      const isFuture = dk > todayStr;
+      const isToday = dk === todayStr;
+      const label = isToday ? 'Hoy' : days[d.getDay()] + ' ' + d.getDate();
+      let dots = '';
+      PILLAR_ICONS.forEach((icon, pi) => {
+        const keys = PILLAR_KEYS[pi];
+        const done = keys.every(k => data[k] === 'done');
+        const any  = keys.some(k => data[k] === 'done');
+        let cls = 'hist-dot';
+        if (isFuture) cls += ' empty';
+        else if (done || any) cls += ' done';
+        else cls += ' miss';
+        dots += `<div class="${cls}" title="${icon}">${icon}</div>`;
+      });
+      html += `<div class="hist-row">
+        <div class="hist-date" style="${isToday ? 'color:var(--accent)' : ''}">${label}</div>
+        <div class="hist-dots">${dots}</div>
+      </div>`;
+    }
+    container.innerHTML = html;
+  }
+
+  renderTodayHabits();
+  renderWeekGrid();
+  renderHistorial();
 </script>
 
 </body>
