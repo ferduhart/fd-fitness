@@ -569,6 +569,35 @@
       border-color: rgba(59,130,246,0.3);
       color: var(--accent);
     }
+
+    /* LIGHT MODE */
+    body.light {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface2: #e2e8f0;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+    }
+    body.light header {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-bottom-color: #93c5fd;
+    }
+
+    /* THEME TOGGLE BUTTON */
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      padding: 4px 10px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .theme-btn:hover { background: var(--surface2); }
   </style>
 </head>
 <body>
@@ -576,7 +605,10 @@
 <header>
   <div class="header-top">
     <div class="logo">FD Fitness</div>
-    <div class="date-badge">Vie 4 Abr 2026</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="date-badge">Vie 4 Abr 2026</div>
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambiar modo">☀️</button>
+    </div>
   </div>
   <div class="header-sub">403 runs · 3,078 km históricos · Objetivo: 21K</div>
 </header>
@@ -976,6 +1008,19 @@
 </section>
 
 <script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('theme-btn');
+    body.classList.toggle('light');
+    btn.textContent = body.classList.contains('light') ? '🌙' : '☀️';
+    localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+  }
+  // Restore saved preference
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('theme-btn').textContent = '🌙';
+  }
+
   function toggle(header) {
     const body = header.nextElementSibling;
     const isCollapsed = header.classList.contains('collapsed');
