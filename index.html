@@ -24,6 +24,20 @@
       --z5: #ef4444;
     }
 
+    .light {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface2: #e8edf3;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+    }
+    .light header {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-bottom-color: #93c5fd;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -576,7 +590,10 @@
 <header>
   <div class="header-top">
     <div class="logo">FD Fitness</div>
-    <div class="date-badge">Vie 4 Abr 2026</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button onclick="toggleTheme()" id="theme-btn" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:20px;font-size:13px;cursor:pointer;line-height:1">🌙</button>
+      <div class="date-badge">Vie 4 Abr 2026</div>
+    </div>
   </div>
   <div class="header-sub">403 runs · 3,078 km históricos · Objetivo: 21K</div>
 </header>
@@ -976,6 +993,17 @@
 </section>
 
 <script>
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('theme-btn').textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+  // Apply saved theme on load
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('theme-btn').textContent = '☀️';
+  }
+
   function toggle(header) {
     const body = header.nextElementSibling;
     const isCollapsed = header.classList.contains('collapsed');
