@@ -2,2107 +2,381 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="light-content">
   <meta name="apple-mobile-web-app-title" content="FD Fitness">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e1a'/><rect x='18' y='44' width='64' height='12' rx='6' fill='%233b82f6'/><circle cx='18' cy='50' r='14' fill='none' stroke='%233b82f6' stroke-width='5'/><circle cx='82' cy='50' r='14' fill='none' stroke='%233b82f6' stroke-width='5'/></svg>">
+  <meta name="theme-color" content="#f5f5f7">
   <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23007AFF'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='-apple-system'>💪</text></svg>">
   <title>FD Fitness</title>
   <style>
-    :root {
-      --bg: #0a0e1a;
-      --surface: #111827;
-      --surface2: #1a2235;
-      --border: #1e2d45;
-      --accent: #3b82f6;
-      --accent2: #10b981;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-      --text: #e2e8f0;
-      --text-muted: #64748b;
-      --text-dim: #94a3b8;
-      --z1: #64748b;
-      --z2: #3b82f6;
-      --z3: #10b981;
-      --z4: #f59e0b;
-      --z5: #ef4444;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      font-size: 15px;
-      line-height: 1.5;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 0 80px;
-    }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 16px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg, #3b82f6, #10b981);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .date-badge {
-      font-size: 11px;
-      color: var(--text-muted);
-      background: var(--surface);
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-    .header-sub {
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* SECTIONS */
-    section {
-      margin: 12px 12px 0;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px 12px 0 0;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.15s;
-    }
-    .section-header:hover { background: var(--surface2); }
-    .section-header.collapsed { border-radius: 12px; }
-
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .section-title.green { color: var(--accent2); }
-    .section-title.amber { color: var(--warn); }
-    .section-title.red { color: var(--danger); }
-
-    .chevron {
-      font-size: 12px;
-      color: var(--text-muted);
-      transition: transform 0.2s;
-    }
-    .collapsed .chevron { transform: rotate(-90deg); }
-
-    .section-body {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
-      padding: 0 16px 16px;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+      height: 100dvh;
       overflow: hidden;
-    }
-
-    /* HOY */
-    .today-hero {
-      background: linear-gradient(135deg, #0c1f3f 0%, #0f2a1e 100%);
-      border: 1px solid #1e3a5f;
-      border-radius: 10px;
-      padding: 16px;
-      margin-top: 4px;
-    }
-    .today-type {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--accent2);
-      background: rgba(16,185,129,0.15);
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-    }
-    .today-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .today-desc {
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-top: 6px;
-      padding: 8px 0;
-      border-top: 1px solid var(--border);
-      margin-top: 10px;
-    }
-    .workout-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .metric-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 12px;
-    }
-    .metric-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-    .metric-value {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--accent2);
-    }
-    .metric-unit {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-    .today-protocols {
-      margin-top: 12px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
     }
-    .protocol-row {
+
+    .app {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px 12px;
+      overflow: hidden;
+      max-height: 100dvh;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--surface2);
-      border-radius: 8px;
-      border: 1px solid var(--border);
+      justify-content: space-between;
+      padding: 0 2px;
+      flex-shrink: 0;
     }
-    .protocol-icon {
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-title {
       font-size: 20px;
-      width: 28px;
-      text-align: center;
-    }
-    .protocol-info { flex: 1; }
-    .protocol-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .protocol-detail {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 1px;
-    }
-    .protocol-badge {
-      font-size: 11px;
       font-weight: 700;
-      color: var(--warn);
-      background: rgba(245,158,11,0.15);
+      letter-spacing: -0.5px;
+      color: #1d1d1f;
+    }
+    .header-date {
+      font-size: 13px;
+      color: #86868b;
+      font-weight: 400;
+    }
+    .streak {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FF9500;
+      background: #FFF3E0;
       padding: 3px 8px;
       border-radius: 20px;
-      white-space: nowrap;
-    }
-    .protocol-badge.blue {
-      color: var(--accent);
-      background: rgba(59,130,246,0.15);
-    }
-    .protocol-badge.green {
-      color: var(--accent2);
-      background: rgba(16,185,129,0.15);
-    }
-    .protocol-badge.purple {
-      color: #a78bfa;
-      background: rgba(167,139,250,0.15);
     }
 
-    /* SEMANA */
-    .week-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 4px;
-    }
-    .day-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: border-color 0.15s;
-    }
-    .day-row.today-row {
-      border-color: var(--accent);
-      background: rgba(59,130,246,0.08);
-    }
-    .day-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      width: 30px;
-      flex-shrink: 0;
-      padding-top: 2px;
-      text-transform: uppercase;
-    }
-    .day-row.today-row .day-label { color: var(--accent); }
-    .day-content { flex: 1; }
-    .day-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-    .day-detail {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-    .day-zone {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .z2-tag { color: var(--z2); background: rgba(59,130,246,0.15); }
-    .z3-tag { color: var(--z3); background: rgba(16,185,129,0.15); }
-    .z4-tag { color: var(--z4); background: rgba(245,158,11,0.15); }
-    .rest-tag { color: var(--text-muted); background: rgba(100,116,139,0.15); }
-    .recovery-tag { color: var(--accent2); background: rgba(16,185,129,0.15); }
-
-    /* PROGRESO */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding-top: 4px;
-    }
-    .stat-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-    }
-    .stat-card.full { grid-column: 1 / -1; }
-    .stat-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-    .stat-value {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1;
-    }
-    .stat-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-    .stat-goal {
-      font-size: 11px;
-      color: var(--warn);
-      margin-top: 6px;
-      padding-top: 6px;
-      border-top: 1px solid var(--border);
-    }
-    .progress-bar-wrap {
-      margin-top: 8px;
-      background: var(--bg);
-      border-radius: 4px;
-      height: 6px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-    }
-
-    /* SPLIT CHART */
-    .split-chart {
-      margin-top: 12px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-    }
-    .split-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .split-rows { display: flex; flex-direction: column; gap: 6px; }
-    .split-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .split-km {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      width: 28px;
-    }
-    .split-bar-wrap {
-      flex: 1;
-      background: var(--bg);
-      border-radius: 4px;
-      height: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-    .split-bar {
-      height: 100%;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      padding-left: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .split-hr {
-      font-size: 11px;
-      color: var(--text-muted);
-      width: 56px;
-      text-align: right;
-    }
-
-    /* ZONAS HR */
-    .zones-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 4px;
-    }
-    .zone-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .zone-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .zone-info { flex: 1; }
-    .zone-name {
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .zone-range {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 1px;
-    }
-    .zone-bar-wrap {
-      width: 80px;
-      background: var(--bg);
-      border-radius: 4px;
-      height: 6px;
-    }
-    .zone-bar { height: 100%; border-radius: 4px; }
-
-    /* SUPLEMENTOS */
-    .supps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 4px;
-    }
-    .supp-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .supp-time {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      width: 52px;
-      flex-shrink: 0;
-      padding-top: 2px;
-    }
-    .supp-info { flex: 1; }
-    .supp-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .supp-detail {
-      font-size: 11px;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-    .supp-dose {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    /* RECUPERACIÓN */
-    .recovery-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 4px;
-    }
-    .step-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .step-info { flex: 1; }
-    .step-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .step-detail {
-      font-size: 11px;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-    .recovery-sequence {
-      margin-top: 12px;
-      padding: 12px;
-      background: linear-gradient(135deg, #0c1a2e, #0c1f16);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .seq-title {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .seq-flow {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .seq-step {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 20px;
-    }
-    .seq-arrow {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* NOTE CARD */
-    .note-card {
-      margin-top: 10px;
-      padding: 10px 12px;
-      background: rgba(245,158,11,0.08);
-      border: 1px solid rgba(245,158,11,0.3);
-      border-radius: 8px;
-      font-size: 12px;
-      color: var(--warn);
-    }
-    .note-card.blue {
-      background: rgba(59,130,246,0.08);
-      border-color: rgba(59,130,246,0.3);
-      color: var(--accent);
-    }
-
-    /* WORKOUT BLOCKS */
-    .workout-block {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-top: 10px;
-    }
-    .block-header {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-    }
-    .block-num {
-      width: 22px; height: 22px; border-radius: 50%;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0;
-    }
-    .block-title { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
-    .block-badge {
-      font-size: 10px; font-weight: 700; color: var(--accent2);
-      background: rgba(16,185,129,0.15); padding: 2px 8px; border-radius: 20px;
-    }
-    .ex-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: 8px 0; border-bottom: 1px solid var(--border);
-    }
-    .ex-row:last-child { border-bottom: none; }
-    .ex-svg { width: 48px; height: 48px; flex-shrink: 0; }
-    .ex-info { flex: 1; }
-    .ex-name { font-size: 13px; font-weight: 600; color: var(--text); }
-    .ex-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-    .ex-sets { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
-
-    /* LOG */
-    .log-card {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 14px; margin-top: 8px;
-    }
-    .log-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: 7px 0; border-bottom: 1px solid var(--border);
-    }
-    .log-row:last-child { border-bottom: none; }
-    .log-ico { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; }
-    .log-info { flex: 1; }
-    .log-name { font-size: 13px; font-weight: 600; color: var(--text); }
-    .log-detail { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-    .log-val { font-size: 13px; font-weight: 700; color: var(--accent2); white-space: nowrap; }
-    .strava-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; }
-    .strava-stat {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 8px; text-align: center;
-    }
-    .strava-val { font-size: 15px; font-weight: 800; color: var(--accent); }
-    .strava-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 2px; }
-
-    /* HABIT TRACKER */
-    .habit-grid {
-      display: grid; grid-template-columns: repeat(7, 1fr);
-      gap: 4px; padding: 4px 0 8px;
-    }
-    .habit-col { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-    .habit-day-lbl { font-size: 8px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1px; }
-    .habit-dot {
-      width: 32px; height: 32px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; cursor: pointer;
-      border: 1.5px solid var(--border); background: var(--surface2);
-      transition: transform 0.1s, background 0.15s;
-    }
-    .habit-dot:active { transform: scale(0.88); }
-    .habit-dot.done { background: rgba(16,185,129,0.2); border-color: var(--accent2); }
-    .habit-dot.missed { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); }
-    .habit-dot.future { opacity: 0.25; cursor: default; }
-    .pillar-section { padding-top: 4px; }
-    .pillar-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 0; border-bottom: 1px solid var(--border);
-    }
-    .pillar-row:last-child { border-bottom: none; }
-    .pillar-ico { font-size: 20px; width: 26px; text-align: center; }
-    .pillar-info { flex: 1; }
-    .pillar-name { font-size: 13px; font-weight: 600; color: var(--text); }
-    .pillar-detail { font-size: 11px; color: var(--text-muted); }
-    .pillar-checks { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .hck {
-      min-width: 26px; height: 26px; border-radius: 7px;
-      border: 2px solid var(--border); background: var(--surface2);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 700; color: var(--text-muted);
-      transition: all 0.15s; padding: 0 4px;
-    }
-    .hck.checked { background: rgba(16,185,129,0.2); border-color: var(--accent2); color: var(--accent2); }
-
-    /* HISTORIAL */
-    .hist-row {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 0; border-bottom: 1px solid var(--border);
-    }
-    .hist-row:last-child { border-bottom: none; }
-    .hist-date { font-size: 11px; font-weight: 700; color: var(--text-muted); width: 48px; flex-shrink: 0; }
-    .hist-dots { display: flex; gap: 4px; flex: 1; }
-    .hist-dot {
-      width: 26px; height: 26px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; font-size: 13px;
-    }
-    .hist-dot.done { background: rgba(16,185,129,0.2); border: 1px solid var(--accent2); }
-    .hist-dot.miss { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
-    .hist-dot.empty { background: var(--surface2); border: 1px solid var(--border); opacity: 0.5; }
-
-    /* LIGHT MODE */
-    body.light {
-      --bg: #f1f5f9;
-      --surface: #ffffff;
-      --surface2: #e2e8f0;
-      --border: #cbd5e1;
-      --text: #1e293b;
-      --text-muted: #64748b;
-      --text-dim: #475569;
-    }
-    body.light header {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-      border-bottom-color: #93c5fd;
-    }
-
-    /* THEME TOGGLE BUTTON */
-    .theme-btn {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 16px;
-      line-height: 1;
-      padding: 4px 10px;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .theme-btn:hover { background: var(--surface2); }
-
-    /* SMOOTH COLLAPSE */
-    .section-body {
-      transition: max-height 0.35s ease, padding-bottom 0.25s ease, padding-top 0.25s ease;
-      max-height: 3000px;
-    }
-    .section-body.collapsed-body {
-      max-height: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      overflow: hidden;
-    }
-
-    /* HERO SECTION — mañana */
-    section.hero-section > .section-header {
-      background: linear-gradient(135deg, #0c1f3f 0%, #0e2b1a 100%);
-      border-color: #1e3a5f;
-    }
-    section.hero-section > .section-header:hover {
-      background: linear-gradient(135deg, #0f2a50 0%, #112e1e 100%);
-    }
-    section.hero-section > .section-body {
-      background: linear-gradient(180deg, #0a1928 0%, var(--surface) 80%);
-      border-color: #1e3a5f;
-    }
-
-    /* HCK TOUCH TARGETS + ANIMATIONS */
-    .hck {
-      min-height: 48px !important;
-      min-width: 48px !important;
-      border-radius: 10px !important;
-      font-size: 13px !important;
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-    .hck.checked {
-      transform: scale(1.08);
-    }
-    .hck.pop {
-      animation: hck-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    @keyframes hck-pop {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.25); }
-      100% { transform: scale(1.08); }
-    }
-
-    /* HABIT DOT TOUCH */
-    .habit-dot { min-height: 36px !important; min-width: 36px !important; }
-
-    /* PROGRESS RING */
-    .progress-ring-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 0 6px;
-    }
-    .progress-ring-svg { flex-shrink: 0; }
-    .progress-ring-label {
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-    .progress-ring-pct {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--accent2);
-      line-height: 1;
-    }
-    .progress-ring-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* EXPORT BUTTON */
-    .export-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 7px 12px;
-      margin-top: 12px;
-      width: 100%;
-      justify-content: center;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-    }
-    .export-btn:hover {
-      background: var(--surface2);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ---- MI PROGRESO ---- */
-    .streak-badge {
-      display: flex; align-items: center; gap: 14px;
+    /* ─── CARDS ─── */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
       padding: 14px 16px;
-      background: linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(239,68,68,0.08) 100%);
-      border: 1px solid rgba(245,158,11,0.35);
-      border-radius: 10px; margin-top: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      flex-shrink: 0;
     }
-    .streak-fire { font-size: 32px; line-height: 1; }
-    .streak-count { font-size: 22px; font-weight: 800; color: var(--warn); line-height: 1.1; }
-    .streak-lbl { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
-    .week-bars-card {
-      margin-top: 10px; padding: 12px;
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
-    }
-    .week-bars-hdr {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 10px;
-    }
-    .week-legend { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); }
-    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .kpi-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-    .kpi-card {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 8px; text-align: center;
-    }
-    .kpi-val { font-size: 18px; font-weight: 800; color: var(--accent); line-height: 1.1; }
-    .kpi-unit { font-size: 11px; font-weight: 400; color: var(--text-muted); }
-    .kpi-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 3px; }
 
-    /* ---- CREATINA LOADING ---- */
-    .creatina-phase-row { display: flex; gap: 8px; margin-top: 6px; }
-    .c-phase {
-      flex: 1; padding: 10px; border-radius: 8px;
-      border: 1px solid var(--border); background: var(--surface2); text-align: center;
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #86868b;
+      margin-bottom: 8px;
     }
-    .c-phase.active { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
-    .c-phase-name {
-      font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 4px;
-    }
-    .c-phase.active .c-phase-name { color: #a78bfa; }
-    .c-phase-dose { font-size: 18px; font-weight: 800; color: var(--text); }
-    .c-phase-desc { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
-    .c-tank-row {
-      display: flex; align-items: center; gap: 16px;
-      padding: 14px; margin-top: 10px;
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
-    }
-    .c-tank {
-      width: 56px; height: 96px; border-radius: 10px;
-      border: 2px solid #a78bfa; position: relative;
-      background: var(--bg); flex-shrink: 0; overflow: hidden;
-    }
-    .c-tank-fill {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(180deg, #c4b5fd 0%, #7c3aed 100%);
-      border-radius: 0 0 8px 8px;
-      transition: height 1s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .c-tank-pct-overlay {
-      position: absolute; inset: 0; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: #fff;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-    }
-    .c-tank-info { flex: 1; }
-    .c-sat-pct { font-size: 32px; font-weight: 800; color: #a78bfa; line-height: 1; }
-    .c-sat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-    .c-day-badge {
-      display: inline-block; margin-top: 8px;
-      font-size: 12px; font-weight: 700;
-      background: rgba(167,139,250,0.15); color: #a78bfa;
-      border: 1px solid rgba(167,139,250,0.3);
-      padding: 3px 10px; border-radius: 20px;
-    }
-    .c-doses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
-    .c-dose-btn {
-      display: flex; align-items: center; gap: 8px;
-      padding: 10px 12px; border-radius: 8px;
-      border: 1.5px solid var(--border); background: var(--surface2);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .c-dose-btn.taken { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
-    .c-dose-ico { font-size: 18px; }
-    .c-dose-txt { flex: 1; }
-    .c-dose-name { font-size: 12px; font-weight: 600; color: var(--text); }
-    .c-dose-time { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
-    .c-dose-check { font-size: 14px; color: var(--text-muted); }
-    .c-dose-btn.taken .c-dose-check { color: #a78bfa; }
-    .c-reset-btn {
-      width: 100%; margin-top: 10px; padding: 8px; border-radius: 8px;
-      border: 1px solid var(--border); background: none;
-      color: var(--text-muted); font-size: 11px; cursor: pointer;
-    }
-    .c-reset-btn:hover { background: var(--surface2); }
 
-    /* ---- MEDICAMENTOS ---- */
-    .meds-section { margin-top: 12px; }
-    .meds-header {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.8px; color: var(--danger); margin-bottom: 6px;
-      padding: 6px 0; border-top: 1px solid var(--border);
+    /* ─── WORKOUT HOY ─── */
+    .workout-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .workout-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .workout-line {
+      font-size: 13.5px;
+      color: #3c3c43;
+      line-height: 1.4;
+    }
+
+    .workout-extras {
+      margin-top: 9px;
+      padding-top: 9px;
+      border-top: 1px solid #f2f2f7;
+      font-size: 13px;
+      color: #86868b;
+    }
+
+    /* ─── LO QUE HICE ─── */
+    .done-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+    .done-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1d1d1f;
+    }
+    .done-check {
+      font-size: 13px;
+      color: #30D158;
+      font-weight: 600;
+    }
+
+    .done-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .done-line {
+      font-size: 12.5px;
+      color: #3c3c43;
+      line-height: 1.35;
+    }
+    .done-stats {
+      margin-top: 7px;
+      font-size: 12px;
+      color: #86868b;
+      font-weight: 500;
+    }
+
+    /* ─── HABIT TRACKER ─── */
+    .habits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .habit-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 8px;
+      border-radius: 12px;
+      border: none;
+      background: #f2f2f7;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .habit-btn.done {
+      background: #E8F8ED;
+    }
+
+    .habit-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #d1d1d6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.18s ease;
+    }
+
+    .habit-btn.done .habit-circle {
+      background: #30D158;
+    }
+
+    .habit-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #86868b;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .habit-btn.done .habit-label {
+      color: #25A244;
+    }
+
+    /* ─── CREATINA ─── */
+    .creatina-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .creatina-text {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1d1d1f;
+    }
+
+    .creatina-pct {
+      font-size: 12px;
+      color: #86868b;
+    }
+
+    .progress-track {
+      height: 5px;
+      background: #f2f2f7;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #007AFF;
+      border-radius: 100px;
+      transition: width 0.3s ease;
     }
   </style>
 </head>
 <body>
+<div class="app">
 
-<header>
-  <div class="header-top">
-    <div class="logo">FD Fitness</div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div class="date-badge">Vie 4 Abr 2026</div>
-      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Cambiar modo">☀️</button>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <span class="header-title">FD Fitness</span>
+      <span class="header-date" id="hoy-fecha"></span>
+    </div>
+    <span class="streak">🔥 <span id="streak-count">2</span></span>
+  </div>
+
+  <!-- WORKOUT DE HOY -->
+  <div class="card">
+    <div class="card-label">Workout de hoy</div>
+    <div class="workout-title" id="workout-titulo">Sáb 5 Abr — Pull + Piernas</div>
+    <div class="workout-lines">
+      <div class="workout-line">🏃 Caminadora inclinación progresiva — 25 min</div>
+      <div class="workout-line">💪 Jalón polea · Remo · Face pulls · Curl — 4×12</div>
+      <div class="workout-line">🧘 Plancha frontal + lateral — 5 min</div>
+    </div>
+    <div class="workout-extras">🧖 Sauna 20 min &nbsp;·&nbsp; ❄️ Frío 2 min</div>
+  </div>
+
+  <!-- LO QUE HICE HOY -->
+  <div class="card">
+    <div class="card-label">Ayer</div>
+    <div class="done-header">
+      <span class="done-date">Vie 4 Abr</span>
+      <span class="done-check">✓ Completado</span>
+    </div>
+    <div class="done-lines">
+      <div class="done-line">🏃 Caminata 20 min + Trote 1 min</div>
+      <div class="done-line">💪 Press pecho · Banco inclinado · Bíceps · Tríceps — 4×12</div>
+      <div class="done-line">🧘 Plancha 3 min &nbsp;·&nbsp; 🧖 Sauna 10 min</div>
+    </div>
+    <div class="done-stats">HR avg 141 bpm &nbsp;·&nbsp; 286 cal</div>
+  </div>
+
+  <!-- HABIT TRACKER -->
+  <div class="card">
+    <div class="card-label">Hábitos de hoy</div>
+    <div class="habits-grid" id="habits-grid">
+      <button class="habit-btn" data-habit="ejercicio" onclick="toggleHabit(this)">
+        <div class="habit-circle">🏃</div>
+        <div class="habit-label">Ejercicio</div>
+      </button>
+      <button class="habit-btn" data-habit="sauna" onclick="toggleHabit(this)">
+        <div class="habit-circle">🧖</div>
+        <div class="habit-label">Sauna</div>
+      </button>
+      <button class="habit-btn" data-habit="frio" onclick="toggleHabit(this)">
+        <div class="habit-circle">❄️</div>
+        <div class="habit-label">Frío</div>
+      </button>
+      <button class="habit-btn" data-habit="lev-am" onclick="toggleHabit(this)">
+        <div class="habit-circle">🌅</div>
+        <div class="habit-label">Lev AM</div>
+      </button>
+      <button class="habit-btn" data-habit="lev-pm" onclick="toggleHabit(this)">
+        <div class="habit-circle">🌙</div>
+        <div class="habit-label">Lev PM</div>
+      </button>
+      <button class="habit-btn" data-habit="creatina" onclick="toggleHabit(this)">
+        <div class="habit-circle">💊</div>
+        <div class="habit-label">Creatina</div>
+      </button>
     </div>
   </div>
-  <div class="header-sub">403 runs · 3,078 km históricos · Objetivo: 21K</div>
-</header>
 
-<!-- ======= LOG HOY — VIE 4 ABR ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title" style="color:#a78bfa">Log — Vie 4 Abr ✓</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Lo que hiciste hoy 💪</div>
-    <div class="log-card">
-      <div class="log-row">
-        <div class="log-ico">🚶</div>
-        <div class="log-info">
-          <div class="log-name">Caminata</div>
-          <div class="log-detail">Inclinación 5.5 · 8 km/h</div>
-        </div>
-        <div class="log-val">20 min</div>
-      </div>
-      <div class="log-row">
-        <div class="log-ico">🏃</div>
-        <div class="log-info">
-          <div class="log-name">Trote</div>
-          <div class="log-detail">Breve esfuerzo</div>
-        </div>
-        <div class="log-val">1 min</div>
-      </div>
-      <div class="log-row">
-        <div class="log-ico">💪</div>
-        <div class="log-info">
-          <div class="log-name">Fuerza — Macro series ×4</div>
-          <div class="log-detail">Press pecho máq. (5→4→3) · Banco inclinado manc. 4×12 · Bíceps 4×12 · Tríceps 4×12</div>
-        </div>
-        <div class="log-val">×4</div>
-      </div>
-      <div class="log-row">
-        <div class="log-ico">🧘</div>
-        <div class="log-info">
-          <div class="log-name">Plancha</div>
-          <div class="log-detail">Con pausas</div>
-        </div>
-        <div class="log-val">3 min</div>
-      </div>
-      <div class="log-row">
-        <div class="log-ico">🔥</div>
-        <div class="log-info">
-          <div class="log-name">Sauna</div>
-          <div class="log-detail">100°C</div>
-        </div>
-        <div class="log-val">10 min</div>
-      </div>
+  <!-- CREATINA PROGRESS -->
+  <div class="card">
+    <div class="creatina-row">
+      <span class="creatina-text">💊 Creatina — Día <span id="cr-day">2</span> de 28</span>
+      <span class="creatina-pct" id="cr-pct">7%</span>
     </div>
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:14px 0 6px;">Strava</div>
-    <div class="strava-row">
-      <div class="strava-stat">
-        <div class="strava-val">2 km</div>
-        <div class="strava-lbl">Run</div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 141</div>
-      </div>
-      <div class="strava-stat">
-        <div class="strava-val">11 min</div>
-        <div class="strava-lbl">Weights</div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 135</div>
-      </div>
-      <div class="strava-stat">
-        <div class="strava-val">10 min</div>
-        <div class="strava-lbl">Workout</div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">HR avg 120</div>
-      </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="cr-bar" style="width: 7%"></div>
     </div>
   </div>
-</section>
 
-<!-- ======= SECCIÓN HOY ======= -->
-<section class="hero-section">
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title green">Mañana — Sáb 5 Abr</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="today-hero" style="background:linear-gradient(135deg,#0c1f3f 0%,#0f2a1e 100%);">
-      <div class="today-type">Mañana — Sábado 5 Abr</div>
-      <div class="today-title">Piernas · Pull · Core · Sauna</div>
-      <div class="today-desc">4 bloques · ~75 min total · Sin cafeína</div>
-      <div class="workout-metrics">
-        <div class="metric-card">
-          <div class="metric-label">Bloques</div>
-          <div class="metric-value">4</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Total aprox</div>
-          <div class="metric-value">75 <span class="metric-unit">min</span></div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Cardio</div>
-          <div class="metric-value" style="color:var(--z2)">Z2</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Cafeína</div>
-          <div class="metric-value" style="color:var(--danger);font-size:14px;">NO ☕</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BLOQUE 1: Piernas -->
-    <div class="workout-block">
-      <div class="block-header">
-        <div class="block-num">1</div>
-        <div class="block-title">Piernas — Caminadora</div>
-        <div class="block-badge">25 min</div>
-      </div>
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="39" width="40" height="4" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.2"/>
-          <line x1="6" y1="39" x2="42" y2="33" stroke="#475569" stroke-width="1" stroke-dasharray="3,2"/>
-          <circle cx="33" cy="9" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="33" y1="13" x2="30" y2="23" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="31" y1="17" x2="25" y2="21" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="31" y1="17" x2="37" y2="19" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="30" y1="23" x2="24" y2="32" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="32" x2="21" y2="38" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="30" y1="23" x2="35" y2="30" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="35" y1="30" x2="37" y2="36" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Inclinación progresiva</div>
-          <div class="ex-detail">5×5 min · 4% → 6% → 8% → 10% → 3% cooldown</div>
-          <div class="ex-detail" style="margin-top:3px;color:var(--accent);">Velocidad: 5.5–6 km/h constante</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:3px;margin-top:8px;border-radius:6px;overflow:hidden;height:26px;">
-        <div style="flex:1;background:rgba(59,130,246,0.25);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#93c5fd;">4%</div>
-        <div style="flex:1;background:rgba(59,130,246,0.4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#93c5fd;">6%</div>
-        <div style="flex:1;background:rgba(59,130,246,0.58);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#bfdbfe;">8%</div>
-        <div style="flex:1;background:rgba(59,130,246,0.78);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#eff6ff;">10%</div>
-        <div style="flex:1;background:rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#6ee7b7;">3%↓</div>
-      </div>
-    </div>
-
-    <!-- BLOQUE 2: Pull/Espalda -->
-    <div class="workout-block">
-      <div class="block-header">
-        <div class="block-num" style="background:var(--accent2)">2</div>
-        <div class="block-title">Pull / Espalda</div>
-        <div class="block-badge">Macro series ×4</div>
-      </div>
-      <!-- Jalón polea -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <line x1="8" y1="6" x2="40" y2="6" stroke="#3b82f6" stroke-width="2"/>
-          <line x1="14" y1="6" x2="16" y2="14" stroke="#475569" stroke-width="1"/>
-          <line x1="34" y1="6" x2="32" y2="14" stroke="#475569" stroke-width="1"/>
-          <circle cx="24" cy="17" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="21" x2="24" y2="33" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="23" x2="16" y2="14" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="23" x2="32" y2="14" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="33" x2="32" y2="33" stroke="#475569" stroke-width="1.5"/>
-          <line x1="24" y1="33" x2="18" y2="43" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="33" x2="30" y2="43" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Jalón polea</div>
-          <div class="ex-detail">Agarre ancho · bajar a clavícula</div>
-        </div>
-        <div class="ex-sets">4×12</div>
-      </div>
-      <!-- Remo mancuerna -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <circle cx="36" cy="10" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="36" y1="14" x2="20" y2="24" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="28" y1="19" x2="22" y2="30" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="28" y1="19" x2="36" y2="28" stroke="#10b981" stroke-width="1.5"/>
-          <rect x="34" y="26" width="9" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
-          <line x1="20" y1="24" x2="17" y2="36" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="20" y1="24" x2="26" y2="36" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Remo mancuerna</div>
-          <div class="ex-detail">Apoyo en banco · codo al techo</div>
-        </div>
-        <div class="ex-sets">4×12</div>
-      </div>
-      <!-- Face pulls -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <rect x="38" y="19" width="6" height="9" rx="1" fill="#1e3a5f" stroke="#475569" stroke-width="1"/>
-          <line x1="38" y1="21" x2="28" y2="21" stroke="#475569" stroke-width="1"/>
-          <line x1="38" y1="27" x2="28" y2="27" stroke="#475569" stroke-width="1"/>
-          <circle cx="16" cy="10" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="14" x2="16" y2="30" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="19" x2="28" y2="21" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="19" x2="28" y2="27" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="30" x2="12" y2="42" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="16" y1="30" x2="20" y2="42" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Face pulls</div>
-          <div class="ex-detail">Polea alta · codos arriba · hacia la cara</div>
-        </div>
-        <div class="ex-sets">4×12</div>
-      </div>
-      <!-- Curl martillo -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="8" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="12" x2="24" y2="28" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="16" x2="14" y2="26" stroke="#10b981" stroke-width="1.5"/>
-          <rect x="10" y="25" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
-          <line x1="24" y1="16" x2="32" y2="22" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="32" y1="22" x2="30" y2="14" stroke="#10b981" stroke-width="1.5"/>
-          <rect x="28" y="11" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.8"/>
-          <line x1="24" y1="28" x2="20" y2="42" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="24" y1="28" x2="28" y2="42" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Curl martillo</div>
-          <div class="ex-detail">Agarre neutro · sin balanceo</div>
-        </div>
-        <div class="ex-sets">4×12</div>
-      </div>
-    </div>
-
-    <!-- BLOQUE 3: Core -->
-    <div class="workout-block">
-      <div class="block-header">
-        <div class="block-num" style="background:var(--warn)">3</div>
-        <div class="block-title">Core</div>
-        <div class="block-badge">5 min · 2 rondas</div>
-      </div>
-      <!-- Plancha frontal -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <line x1="4" y1="40" x2="44" y2="40" stroke="#475569" stroke-width="1.5"/>
-          <line x1="8" y1="28" x2="38" y2="28" stroke="#10b981" stroke-width="2.5"/>
-          <circle cx="40" cy="25" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="12" y1="28" x2="10" y2="39" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="18" y1="28" x2="16" y2="39" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="8" y1="28" x2="6" y2="39" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Plancha frontal</div>
-          <div class="ex-detail">Antebrazos · espalda recta</div>
-        </div>
-        <div class="ex-sets">45 seg ×2</div>
-      </div>
-      <!-- Plancha lateral -->
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <line x1="4" y1="40" x2="44" y2="40" stroke="#475569" stroke-width="1.5"/>
-          <line x1="8" y1="36" x2="38" y2="22" stroke="#10b981" stroke-width="2.5"/>
-          <circle cx="40" cy="19" r="4" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="10" y1="35" x2="6" y2="40" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="22" y1="30" x2="26" y2="21" stroke="#10b981" stroke-width="1.5"/>
-          <line x1="8" y1="36" x2="6" y2="40" stroke="#10b981" stroke-width="1.5"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Plancha lateral</div>
-          <div class="ex-detail">Cada lado</div>
-        </div>
-        <div class="ex-sets">30 seg ×2</div>
-      </div>
-    </div>
-
-    <!-- BLOQUE 4: Sauna + Frío -->
-    <div class="workout-block" style="border-color:rgba(239,68,68,0.35);background:rgba(239,68,68,0.05);">
-      <div class="block-header">
-        <div class="block-num" style="background:#ef4444">4</div>
-        <div class="block-title">Sauna + Frío</div>
-        <div class="block-badge" style="color:#f87171;background:rgba(239,68,68,0.15);">22 min</div>
-      </div>
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <rect x="6" y="20" width="36" height="22" rx="3" stroke="#ef4444" stroke-width="1.5" fill="rgba(239,68,68,0.1)"/>
-          <circle cx="24" cy="28" r="4" stroke="#f87171" stroke-width="1.5"/>
-          <line x1="24" y1="32" x2="24" y2="38" stroke="#f87171" stroke-width="1.5"/>
-          <line x1="24" y1="38" x2="16" y2="38" stroke="#f87171" stroke-width="1.5"/>
-          <line x1="24" y1="38" x2="32" y2="38" stroke="#f87171" stroke-width="1.5"/>
-          <path d="M10 14 Q12 10 10 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
-          <path d="M18 14 Q20 10 18 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
-          <path d="M26 14 Q28 10 26 6" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Sauna</div>
-          <div class="ex-detail">100°C · post-workout</div>
-        </div>
-        <div class="ex-sets" style="color:#f87171;">20 min</div>
-      </div>
-      <div class="ex-row">
-        <svg class="ex-svg" viewBox="0 0 48 48" fill="none">
-          <path d="M24 4 C14 12 10 20 14 28 C16 34 20 38 24 40 C28 38 32 34 34 28 C38 20 34 12 24 4Z" stroke="#60a5fa" stroke-width="1.5" fill="rgba(59,130,246,0.12)"/>
-          <path d="M19 16 C15 21 16 28 20 32" stroke="#93c5fd" stroke-width="1" fill="none"/>
-          <path d="M24 40 L21 44 L27 44 Z" fill="#60a5fa" opacity="0.6"/>
-        </svg>
-        <div class="ex-info">
-          <div class="ex-name">Agua fría</div>
-          <div class="ex-detail">Ducha · lo más fría posible</div>
-        </div>
-        <div class="ex-sets" style="color:#60a5fa;">2 min</div>
-      </div>
-    </div>
-
-    <div class="note-card" style="margin-top:12px;">
-      ☕ Sin cafeína mañana — no es día de alta intensidad. Sistema nervioso tranquilo.
-    </div>
-  </div>
-</section>
-
-<!-- ======= SECCIÓN SEMANA ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title">Esta semana</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="week-grid">
-
-      <div class="day-row">
-        <div class="day-label">Lun</div>
-        <div class="day-content">
-          <div class="day-name">Base aeróbica</div>
-          <div class="day-detail">35–40 min caminadora · mantener conversación</div>
-        </div>
-        <div class="day-zone z2-tag">Z2</div>
-      </div>
-
-      <div class="day-row">
-        <div class="day-label">Mar</div>
-        <div class="day-content">
-          <div class="day-name">Intervalos</div>
-          <div class="day-detail">4×4 min Z4 · 3 min recuperación entre cada uno</div>
-        </div>
-        <div class="day-zone z4-tag">Z4</div>
-      </div>
-
-      <div class="day-row">
-        <div class="day-label">Mié</div>
-        <div class="day-content">
-          <div class="day-name">Easy run + Core</div>
-          <div class="day-detail">30 min fácil + 15 min fuerza core</div>
-        </div>
-        <div class="day-zone z2-tag">Z2</div>
-      </div>
-
-      <div class="day-row">
-        <div class="day-label">Jue</div>
-        <div class="day-content">
-          <div class="day-name">Tempo</div>
-          <div class="day-detail">25 min sostenido · esfuerzo controlado</div>
-        </div>
-        <div class="day-zone z3-tag">Z3</div>
-      </div>
-
-      <div class="day-row today-row">
-        <div class="day-label">Vie ★</div>
-        <div class="day-content">
-          <div class="day-name">Recuperación activa</div>
-          <div class="day-detail">Caminata 5–8% inclinación · 30 min</div>
-        </div>
-        <div class="day-zone recovery-tag">HOY</div>
-      </div>
-
-      <div class="day-row">
-        <div class="day-label">Sáb</div>
-        <div class="day-content">
-          <div class="day-name">Piernas + Pull + Core</div>
-          <div class="day-detail">Caminadora 25 min inclinación · Pull ×4 · Core 5 min · Sauna 20 min</div>
-        </div>
-        <div class="day-zone z3-tag">Z2–3</div>
-      </div>
-
-      <div class="day-row">
-        <div class="day-label">Dom</div>
-        <div class="day-content">
-          <div class="day-name">Descanso total</div>
-          <div class="day-detail">Yoga / stretch / movilidad — sin cardio</div>
-        </div>
-        <div class="day-zone rest-tag">REST</div>
-      </div>
-
-    </div>
-    <div class="note-card blue" style="margin-top:10px;">
-      Todos los días: Sauna 20 min → Agua fría 2 min → Creatina post + Magnesio noche
-    </div>
-  </div>
-</section>
-
-<!-- ======= SECCIÓN PROGRESO ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title amber">Progreso</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label">Runs 2026</div>
-        <div class="stat-value">10</div>
-        <div class="stat-sub">9 registrados + hoy</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" style="width:14%"></div></div>
-        <div class="stat-goal">Meta: 3–4 por semana</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-label">Km 2026</div>
-        <div class="stat-value">35.1</div>
-        <div class="stat-sub">31 + 4.1 km hoy</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" style="width:8%"></div></div>
-        <div class="stat-goal">Objetivo anual: ~450 km</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-label">Consistencia</div>
-        <div class="stat-value" style="color:var(--warn)">10/14</div>
-        <div class="stat-sub">runs en 14 semanas</div>
-        <div class="stat-goal">Target: 3+ runs/semana</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-label">HR prom. último run</div>
-        <div class="stat-value" style="color:var(--z4)">162</div>
-        <div class="stat-sub">bpm · Zona 4</div>
-        <div class="stat-goal">Target: bajar a &lt;145 bpm</div>
-      </div>
-
-      <div class="stat-card full">
-        <div class="stat-label">Historial total</div>
-        <div style="display:flex;gap:16px;align-items:baseline;">
-          <div>
-            <div class="stat-value">403</div>
-            <div class="stat-sub">runs totales</div>
-          </div>
-          <div>
-            <div class="stat-value">3,078</div>
-            <div class="stat-sub">km totales</div>
-          </div>
-        </div>
-        <div class="stat-goal">Base sólida — el cuerpo recuerda. Solo hay que volver.</div>
-      </div>
-    </div>
-
-    <!-- SPLIT CHART -->
-    <div class="split-chart">
-      <div class="split-title">Splits · Último run (4 Abr)</div>
-      <div class="split-rows">
-        <div class="split-row">
-          <div class="split-km">KM 1</div>
-          <div class="split-bar-wrap">
-            <div class="split-bar" style="width:75%; background: linear-gradient(90deg,#334155,#475569);">9:28</div>
-          </div>
-          <div class="split-hr">137 bpm</div>
-        </div>
-        <div class="split-row">
-          <div class="split-km">KM 2</div>
-          <div class="split-bar-wrap">
-            <div class="split-bar" style="width:88%; background: linear-gradient(90deg,#1d4ed8,#2563eb);">7:53</div>
-          </div>
-          <div class="split-hr">166 bpm</div>
-        </div>
-        <div class="split-row">
-          <div class="split-km">KM 3</div>
-          <div class="split-bar-wrap">
-            <div class="split-bar" style="width:89%; background: linear-gradient(90deg,#d97706,#f59e0b);">7:51</div>
-          </div>
-          <div class="split-hr">174 bpm</div>
-        </div>
-        <div class="split-row">
-          <div class="split-km">KM 4</div>
-          <div class="split-bar-wrap">
-            <div class="split-bar" style="width:80%; background: linear-gradient(90deg,#b91c1c,#ef4444);">8:31</div>
-          </div>
-          <div class="split-hr">175 bpm</div>
-        </div>
-      </div>
-      <div class="note-card" style="margin-top:10px; font-size:11px;">
-        Km 1 fue calentamiento (correcto). Km 4 muestra fatiga — el HR no bajó pero el pace cayó. Base aeróbica a construir.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======= MI PROGRESO ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title amber">Mi Progreso 🔥</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="streak-badge">
-      <div class="streak-fire">🔥</div>
-      <div>
-        <div class="streak-count">2 días consecutivos</div>
-        <div class="streak-lbl">Racha activa · Jue + Vie</div>
-      </div>
-    </div>
-    <div class="week-bars-card">
-      <div class="week-bars-hdr">Actividad últimos 7 días · minutos</div>
-      <svg viewBox="0 0 260 80" width="100%" style="display:block">
-        <line x1="0" y1="60" x2="260" y2="60" stroke="#1e2d45" stroke-width="1"/>
-        <!-- Sáb 29: 75min fuerza+cardio -->
-        <rect x="7" y="5" width="24" height="55" rx="3" fill="#f97316" opacity="0.85"/>
-        <text x="19" y="3.5" text-anchor="middle" font-size="7" fill="#f97316" font-weight="700">75</text>
-        <!-- Dom 30: rest -->
-        <text x="56" y="50" text-anchor="middle" font-size="9" fill="#334155">—</text>
-        <!-- Lun 31: 35min cardio -->
-        <rect x="81" y="34" width="24" height="26" rx="3" fill="#3b82f6" opacity="0.85"/>
-        <text x="93" y="32" text-anchor="middle" font-size="7" fill="#93c5fd" font-weight="700">35</text>
-        <!-- Mar 1: 45min intervals -->
-        <rect x="118" y="27" width="24" height="33" rx="3" fill="#f97316" opacity="0.85"/>
-        <text x="130" y="25" text-anchor="middle" font-size="7" fill="#fed7aa" font-weight="700">45</text>
-        <!-- Mié 2: 30min cardio -->
-        <rect x="155" y="38" width="24" height="22" rx="3" fill="#3b82f6" opacity="0.85"/>
-        <text x="167" y="36" text-anchor="middle" font-size="7" fill="#93c5fd" font-weight="700">30</text>
-        <!-- Jue 3: rest -->
-        <text x="204" y="50" text-anchor="middle" font-size="9" fill="#334155">—</text>
-        <!-- Vie 4 hoy: 60min cardio+fuerza -->
-        <rect x="229" y="16" width="24" height="44" rx="3" fill="#f97316"/>
-        <text x="241" y="14" text-anchor="middle" font-size="7" fill="#fdba74" font-weight="700">60</text>
-        <!-- Labels -->
-        <text x="19" y="75" text-anchor="middle" font-size="9" fill="#475569" font-weight="600">S</text>
-        <text x="56" y="75" text-anchor="middle" font-size="9" fill="#334155">D</text>
-        <text x="93" y="75" text-anchor="middle" font-size="9" fill="#475569">L</text>
-        <text x="130" y="75" text-anchor="middle" font-size="9" fill="#475569">M</text>
-        <text x="167" y="75" text-anchor="middle" font-size="9" fill="#475569">X</text>
-        <text x="204" y="75" text-anchor="middle" font-size="9" fill="#334155">J</text>
-        <text x="241" y="75" text-anchor="middle" font-size="9" fill="#3b82f6" font-weight="700">V★</text>
-      </svg>
-      <div class="week-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Cardio</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>Fuerza/Mixto</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Recovery</div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card">
-        <div class="kpi-val">2 <span class="kpi-unit">km</span></div>
-        <div class="kpi-lbl">km semana</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">60 <span class="kpi-unit">min</span></div>
-        <div class="kpi-lbl">total hoy</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-val">132 <span class="kpi-unit">bpm</span></div>
-        <div class="kpi-lbl">HR prom.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======= CREATINA LOADING ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title" style="color:#a78bfa">Creatina — Carga 💊</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="creatina-phase-row">
-      <div class="c-phase active" id="c-phase-carga">
-        <div class="c-phase-name">Fase Carga</div>
-        <div class="c-phase-dose">20g/día</div>
-        <div class="c-phase-desc">4 × 5g · 5–7 días</div>
-      </div>
-      <div class="c-phase" id="c-phase-mant">
-        <div class="c-phase-name">Mantenimiento</div>
-        <div class="c-phase-dose">5g/día</div>
-        <div class="c-phase-desc">indefinido</div>
-      </div>
-    </div>
-    <div class="c-tank-row">
-      <div class="c-tank">
-        <div class="c-tank-fill" id="c-tank-fill" style="height:0px"></div>
-        <div class="c-tank-pct-overlay" id="c-tank-overlay">0%</div>
-      </div>
-      <div class="c-tank-info">
-        <div class="c-sat-pct" id="c-sat-pct">0%</div>
-        <div class="c-sat-lbl">Saturación muscular</div>
-        <div class="c-day-badge" id="c-day-badge">Carga — Día 1 de 7</div>
-        <div style="font-size:10px;color:var(--text-muted);margin-top:8px;">Al 100%: músculos saturados de creatina-fosfato</div>
-      </div>
-    </div>
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin:12px 0 6px;">Dosis hoy (4 × 5g = 20g)</div>
-    <div class="c-doses-grid">
-      <div class="c-dose-btn" id="c-dose-d1" onclick="toggleCreatinaDose('d1')">
-        <div class="c-dose-ico">🌅</div>
-        <div class="c-dose-txt">
-          <div class="c-dose-name">Mañana</div>
-          <div class="c-dose-time">Ayunas</div>
-        </div>
-        <div class="c-dose-check">○</div>
-      </div>
-      <div class="c-dose-btn" id="c-dose-d2" onclick="toggleCreatinaDose('d2')">
-        <div class="c-dose-ico">☀️</div>
-        <div class="c-dose-txt">
-          <div class="c-dose-name">Mediodía</div>
-          <div class="c-dose-time">Con comida</div>
-        </div>
-        <div class="c-dose-check">○</div>
-      </div>
-      <div class="c-dose-btn" id="c-dose-d3" onclick="toggleCreatinaDose('d3')">
-        <div class="c-dose-ico">💪</div>
-        <div class="c-dose-txt">
-          <div class="c-dose-name">Post-workout</div>
-          <div class="c-dose-time">Con carbs</div>
-        </div>
-        <div class="c-dose-check">○</div>
-      </div>
-      <div class="c-dose-btn" id="c-dose-d4" onclick="toggleCreatinaDose('d4')">
-        <div class="c-dose-ico">🌙</div>
-        <div class="c-dose-txt">
-          <div class="c-dose-name">Noche</div>
-          <div class="c-dose-time">Con cena</div>
-        </div>
-        <div class="c-dose-check">○</div>
-      </div>
-    </div>
-    <button class="c-reset-btn" onclick="resetCreatina()">↺ Reiniciar fase de carga</button>
-  </div>
-</section>
-
-<!-- ======= SECCIÓN ZONAS HR ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title">Zonas HR</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div style="font-size:11px;color:var(--text-muted);padding:4px 0 10px;">Calibradas a HR max 188 bpm</div>
-    <div class="zones-list">
-      <div class="zone-row">
-        <div class="zone-dot" style="background:var(--z1)"></div>
-        <div class="zone-info">
-          <div class="zone-name" style="color:var(--z1)">Z1 — Recovery</div>
-          <div class="zone-range">&lt;113 bpm · caminata suave, movilidad</div>
-        </div>
-        <div class="zone-bar-wrap"><div class="zone-bar" style="width:20%;background:var(--z1)"></div></div>
-      </div>
-      <div class="zone-row">
-        <div class="zone-dot" style="background:var(--z2)"></div>
-        <div class="zone-info">
-          <div class="zone-name" style="color:var(--z2)">Z2 — Aerobic Base</div>
-          <div class="zone-range">113–141 bpm · conversación posible</div>
-        </div>
-        <div class="zone-bar-wrap"><div class="zone-bar" style="width:45%;background:var(--z2)"></div></div>
-      </div>
-      <div class="zone-row">
-        <div class="zone-dot" style="background:var(--z3)"></div>
-        <div class="zone-info">
-          <div class="zone-name" style="color:var(--z3)">Z3 — Tempo</div>
-          <div class="zone-range">141–160 bpm · esfuerzo moderado-alto</div>
-        </div>
-        <div class="zone-bar-wrap"><div class="zone-bar" style="width:60%;background:var(--z3)"></div></div>
-      </div>
-      <div class="zone-row">
-        <div class="zone-dot" style="background:var(--z4)"></div>
-        <div class="zone-info">
-          <div class="zone-name" style="color:var(--z4)">Z4 — Threshold</div>
-          <div class="zone-range">160–175 bpm · difícil sostener conversación</div>
-        </div>
-        <div class="zone-bar-wrap"><div class="zone-bar" style="width:78%;background:var(--z4)"></div></div>
-      </div>
-      <div class="zone-row">
-        <div class="zone-dot" style="background:var(--z5)"></div>
-        <div class="zone-info">
-          <div class="zone-name" style="color:var(--z5)">Z5 — Max</div>
-          <div class="zone-range">175–188 bpm · sprint, intervalos cortos</div>
-        </div>
-        <div class="zone-bar-wrap"><div class="zone-bar" style="width:95%;background:var(--z5)"></div></div>
-      </div>
-    </div>
-    <div class="note-card blue" style="margin-top:10px;">
-      Tu base aeróbica está débil — runs recientes en Z4 sugieren que Z2 se siente lento pero es donde se construye el motor.
-    </div>
-  </div>
-</section>
-
-<!-- ======= SECCIÓN SUPLEMENTOS ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title green">Suplementos</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="supps-list">
-      <div class="supp-row">
-        <div class="supp-time">Pre</div>
-        <div class="supp-info">
-          <div class="supp-name">Cafeína</div>
-          <div class="supp-detail">30 min antes · solo días de intensidad (Z3–Z4)</div>
-        </div>
-        <div class="supp-dose">200mg</div>
-      </div>
-      <div class="supp-row">
-        <div class="supp-time">Mañana</div>
-        <div class="supp-info">
-          <div class="supp-name">Lion's Mane</div>
-          <div class="supp-detail">Función cognitiva · NGF · en ayunas o con desayuno</div>
-        </div>
-        <div class="supp-dose" style="color:var(--text-muted);font-size:11px;">configurar dosis</div>
-      </div>
-      <div class="supp-row">
-        <div class="supp-time">Mañana</div>
-        <div class="supp-info">
-          <div class="supp-name">Cordyceps</div>
-          <div class="supp-detail">Energía · VO2 max · pre-workout o mañana</div>
-        </div>
-        <div class="supp-dose" style="color:var(--text-muted);font-size:11px;">configurar dosis</div>
-      </div>
-      <div class="supp-row">
-        <div class="supp-time">Post</div>
-        <div class="supp-info">
-          <div class="supp-name">Creatina monohidrato</div>
-          <div class="supp-detail">Con agua · ver tracker de carga para fase actual</div>
-        </div>
-        <div class="supp-dose">5g</div>
-      </div>
-      <div class="supp-row">
-        <div class="supp-time">Noche</div>
-        <div class="supp-info">
-          <div class="supp-name">Citrato de Magnesio</div>
-          <div class="supp-detail">Antes de dormir · sueño y recuperación muscular</div>
-        </div>
-        <div class="supp-dose">400mg</div>
-      </div>
-    </div>
-    <div class="meds-section">
-      <div class="meds-header">💊 Medicamentos</div>
-      <div class="supps-list">
-        <div class="supp-row" style="border-color:rgba(239,68,68,0.25)">
-          <div class="supp-time" style="color:var(--danger)">AM</div>
-          <div class="supp-info">
-            <div class="supp-name">Levetiracetam</div>
-            <div class="supp-detail">Con desayuno · antiepiléptico · no saltear</div>
-          </div>
-          <div class="supp-dose" style="color:var(--danger)">1g</div>
-        </div>
-        <div class="supp-row" style="border-color:rgba(239,68,68,0.25)">
-          <div class="supp-time" style="color:var(--danger)">PM</div>
-          <div class="supp-info">
-            <div class="supp-name">Levetiracetam</div>
-            <div class="supp-detail">Con cena · 12h después de la dosis AM</div>
-          </div>
-          <div class="supp-dose" style="color:var(--danger)">1g</div>
-        </div>
-      </div>
-    </div>
-    <div class="note-card" style="margin-top:10px;">
-      Hoy (recuperación activa): sin cafeína. Creatina + magnesio igual.
-    </div>
-  </div>
-</section>
-
-<!-- ======= SECCIÓN RECUPERACIÓN ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title amber">Recuperación</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div class="recovery-steps">
-      <div class="step-row">
-        <div class="step-num">1</div>
-        <div class="step-info">
-          <div class="step-name">Sauna</div>
-          <div class="step-detail">20 min a 100°C · post-workout o sesión independiente · activa el sistema cardiovascular sin impacto</div>
-        </div>
-      </div>
-      <div class="step-row">
-        <div class="step-num" style="background:var(--accent2)">2</div>
-        <div class="step-info">
-          <div class="step-name">Agua fría</div>
-          <div class="step-detail">2 min ducha fría · lo más fría posible · reduce inflamación, mejora recuperación</div>
-        </div>
-      </div>
-      <div class="step-row">
-        <div class="step-num" style="background:var(--warn)">3</div>
-        <div class="step-info">
-          <div class="step-name">Stretch</div>
-          <div class="step-detail">5–10 min · caderas, isquiotibiales, pantorrillas · prioridad post-run</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="recovery-sequence">
-      <div class="seq-title">Secuencia ideal del día</div>
-      <div class="seq-flow">
-        <div class="seq-step" style="background:rgba(59,130,246,0.2);color:var(--accent)">Ejercicio</div>
-        <div class="seq-arrow">→</div>
-        <div class="seq-step" style="background:rgba(239,68,68,0.2);color:#f87171">Sauna</div>
-        <div class="seq-arrow">→</div>
-        <div class="seq-step" style="background:rgba(16,185,129,0.2);color:var(--accent2)">Frío</div>
-        <div class="seq-arrow">→</div>
-        <div class="seq-step" style="background:rgba(245,158,11,0.2);color:var(--warn)">Stretch</div>
-        <div class="seq-arrow">→</div>
-        <div class="seq-step" style="background:rgba(167,139,250,0.2);color:#a78bfa">Creatina</div>
-      </div>
-    </div>
-
-    <div class="note-card blue" style="margin-top:10px;">
-      Upgrade pendiente: tina de hielo — cuando llegue, reemplaza la ducha fría por 10 min a 10–12°C.
-    </div>
-  </div>
-</section>
-
-<!-- ======= HABIT TRACKER ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title green">Habit Tracker</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <!-- PROGRESS RING -->
-    <div class="progress-ring-wrap">
-      <svg class="progress-ring-svg" width="64" height="64" viewBox="0 0 64 64">
-        <circle cx="32" cy="32" r="26" fill="none" stroke="var(--border)" stroke-width="5"/>
-        <circle id="progress-ring-circle" cx="32" cy="32" r="26" fill="none"
-          stroke="var(--accent2)" stroke-width="5" stroke-linecap="round"
-          stroke-dasharray="163.36" stroke-dashoffset="163.36"
-          transform="rotate(-90 32 32)"
-          style="transition: stroke-dashoffset 0.5s ease;"/>
-        <text id="progress-ring-text" x="32" y="37" text-anchor="middle"
-          font-size="14" font-weight="800" fill="var(--accent2)">0%</text>
-      </svg>
-      <div>
-        <div class="progress-ring-pct" id="progress-ring-pct">0 / 7</div>
-        <div class="progress-ring-sub">pilares hoy</div>
-      </div>
-    </div>
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:4px 0 6px;">Semana actual</div>
-    <div class="habit-grid" id="habit-week-grid"><!-- JS --></div>
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:14px;margin-bottom:2px;">Hoy — <span id="habit-today-label"></span></div>
-    <div class="pillar-section">
-      <div class="pillar-row">
-        <div class="pillar-ico">🏃</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Ejercicio</div>
-          <div class="pillar-detail">tipo + duración</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('ejercicio')" id="hck-ejercicio">✓</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">🔥</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Sauna</div>
-          <div class="pillar-detail">20 min objetivo</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('sauna')" id="hck-sauna">✓</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">🧊</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Frío</div>
-          <div class="pillar-detail">Ducha fría 2 min</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('frio')" id="hck-frio">✓</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">💊</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Levetiracetam 1g</div>
-          <div class="pillar-detail">AM + PM</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('leve_am')" id="hck-leve_am">AM</div>
-          <div class="hck" onclick="toggleHabit('leve_pm')" id="hck-leve_pm">PM</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">🧪</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Suplementos</div>
-          <div class="pillar-detail">Creatina · Magnesio · Cafeína</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('creatina')" id="hck-creatina">CR</div>
-          <div class="hck" onclick="toggleHabit('magnesio')" id="hck-magnesio">MG</div>
-          <div class="hck" onclick="toggleHabit('cafeina')" id="hck-cafeina">CAF</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">💼</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Trabajo</div>
-          <div class="pillar-detail">Horas productivas</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('trabajo')" id="hck-trabajo">✓</div>
-        </div>
-      </div>
-      <div class="pillar-row">
-        <div class="pillar-ico">❤️</div>
-        <div class="pillar-info">
-          <div class="pillar-name">Familia / Pareja</div>
-          <div class="pillar-detail">Tiempo personal</div>
-        </div>
-        <div class="pillar-checks">
-          <div class="hck" onclick="toggleHabit('personal')" id="hck-personal">✓</div>
-        </div>
-      </div>
-    </div>
-    <button class="export-btn" onclick="exportData()">⬇ Export Data — JSON</button>
-  </div>
-</section>
-
-<!-- ======= HISTORIAL 7 DÍAS ======= -->
-<section>
-  <div class="section-header" onclick="toggle(this)">
-    <span class="section-title amber">Historial 7 días</span>
-    <span class="chevron">▾</span>
-  </div>
-  <div class="section-body">
-    <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Pilares completados por día</div>
-    <div id="hist-container"><!-- JS --></div>
-  </div>
-</section>
+</div>
 
 <script>
-  function toggleTheme() {
-    const body = document.body;
-    const btn = document.getElementById('theme-btn');
-    body.classList.toggle('light');
-    btn.textContent = body.classList.contains('light') ? '🌙' : '☀️';
-    localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
-  }
-  // Restore saved preference
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light');
-    document.getElementById('theme-btn').textContent = '🌙';
-  }
+  // ─── DATE HEADER ───
+  (function() {
+    const now = new Date();
+    const opts = { weekday: 'short', day: 'numeric', month: 'short' };
+    document.getElementById('hoy-fecha').textContent =
+      now.toLocaleDateString('es-MX', opts);
+  })();
 
-  function toggle(header) {
-    const body = header.nextElementSibling;
-    header.classList.toggle('collapsed');
-    body.classList.toggle('collapsed-body');
+  // ─── HABITS ───
+  const TODAY = new Date().toISOString().slice(0, 10);
+
+  function loadHabits() {
+    try { return JSON.parse(localStorage.getItem('fd_habits_' + TODAY) || '{}'); }
+    catch(e) { return {}; }
   }
 
-  // ======= HABIT TRACKER =======
-  const HABIT_KEYS = ['ejercicio','sauna','frio','leve_am','leve_pm','creatina','magnesio','cafeina','trabajo','personal'];
-  const PILLAR_ICONS = ['🏃','🔥','🧊','💊','🧪','💼','❤️'];
-  const PILLAR_KEYS  = [['ejercicio'],['sauna'],['frio'],['leve_am','leve_pm'],['creatina','magnesio','cafeina'],['trabajo'],['personal']];
-  const DAY_LABELS   = ['D','L','M','X','J','V','S'];
-
-  function dateKey(d) { return d.toISOString().split('T')[0]; }
-  function todayKey() { return dateKey(new Date()); }
-
-  function loadDay(dk) {
-    try { return JSON.parse(localStorage.getItem('habits_' + dk)) || {}; } catch(e) { return {}; }
-  }
-  function saveDay(dk, data) {
-    localStorage.setItem('habits_' + dk, JSON.stringify(data));
+  function saveHabits(habits) {
+    localStorage.setItem('fd_habits_' + TODAY, JSON.stringify(habits));
   }
 
-  function toggleHabit(key) {
-    const dk = todayKey();
-    const data = loadDay(dk);
-    data[key] = data[key] === 'done' ? null : 'done';
-    saveDay(dk, data);
-    // pop animation
-    const el = document.getElementById('hck-' + key);
-    if (el && data[key] === 'done') {
-      el.classList.remove('pop');
-      void el.offsetWidth; // reflow
-      el.classList.add('pop');
-    }
-    renderTodayHabits();
-    renderWeekGrid();
-    renderHistorial();
+  function toggleHabit(btn) {
+    const key = btn.dataset.habit;
+    const habits = loadHabits();
+    habits[key] = !habits[key];
+    saveHabits(habits);
+    btn.classList.toggle('done', !!habits[key]);
   }
 
-  function updateProgressRing() {
-    const dk = todayKey();
-    const data = loadDay(dk);
-    const total = PILLAR_KEYS.length;
-    const done = PILLAR_KEYS.filter(keys => keys.some(k => data[k] === 'done')).length;
-    const pct = total > 0 ? Math.round(done / total * 100) : 0;
-    const circumference = 2 * Math.PI * 26; // r=26 → ~163.36
-    const offset = circumference - (pct / 100) * circumference;
-    const circle = document.getElementById('progress-ring-circle');
-    const text   = document.getElementById('progress-ring-text');
-    const pctEl  = document.getElementById('progress-ring-pct');
-    if (circle) circle.style.strokeDashoffset = offset.toFixed(2);
-    if (circle) circle.style.stroke = pct === 100 ? 'var(--accent2)' : pct >= 50 ? 'var(--warn)' : 'var(--accent)';
-    if (text)   text.textContent = pct + '%';
-    if (pctEl)  pctEl.textContent = done + ' / ' + total;
-  }
-
-  function exportData() {
-    const KEY_MAP = {
-      ejercicio: 'exercise', sauna: 'sauna', frio: 'cold',
-      leve_am: 'levetiracetam_am', leve_pm: 'levetiracetam_pm',
-      creatina: 'creatine', magnesio: 'magnesium', cafeina: 'caffeine',
-      trabajo: 'work', personal: 'personal'
-    };
-    const records = [];
-    // Collect all stored habit keys
-    const allKeys = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith('habits_')) allKeys.push(k);
-    }
-    allKeys.sort();
-    allKeys.forEach(lsKey => {
-      const date = lsKey.replace('habits_', '');
-      const raw = loadDay(date);
-      const habits = {};
-      Object.entries(KEY_MAP).forEach(([src, dest]) => {
-        habits[dest] = raw[src] === 'done';
-      });
-      // extras not in tracker default false
-      habits.family = false;
-      habits.partner = false;
-      records.push({ date, habits });
+  // Restore habit state on load
+  (function() {
+    const habits = loadHabits();
+    document.querySelectorAll('.habit-btn').forEach(btn => {
+      btn.classList.toggle('done', !!habits[btn.dataset.habit]);
     });
-    const json = JSON.stringify(records, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'fd-fitness-habits-' + todayKey() + '.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
+  })();
 
-  function renderTodayHabits() {
-    const dk = todayKey();
-    const data = loadDay(dk);
-    const today = new Date();
-    const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-    const lbl = document.getElementById('habit-today-label');
-    if (lbl) lbl.textContent = days[today.getDay()] + ' ' + today.getDate();
-    HABIT_KEYS.forEach(k => {
-      const el = document.getElementById('hck-' + k);
-      if (el) el.classList.toggle('checked', data[k] === 'done');
-    });
-    updateProgressRing();
-  }
-
-  function renderWeekGrid() {
-    const grid = document.getElementById('habit-week-grid');
-    if (!grid) return;
-    const today = new Date();
-    const todayStr = dateKey(today);
-    const dow = today.getDay();
-    // Monday-based week
-    const monday = new Date(today);
-    monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
-    let html = '';
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(monday);
-      d.setDate(monday.getDate() + i);
-      const dk = dateKey(d);
-      const data = loadDay(dk);
-      const isFuture = dk > todayStr;
-      const isToday = dk === todayStr;
-      let pillars = '';
-      PILLAR_ICONS.forEach((icon, pi) => {
-        const keys = PILLAR_KEYS[pi];
-        const done = keys.every(k => data[k] === 'done');
-        const any  = keys.some(k => data[k] === 'done');
-        let cls = 'habit-dot';
-        if (isFuture) cls += ' future';
-        else if (done || any) cls += ' done';
-        else cls += ' missed';
-        pillars += `<div class="${cls}">${icon}</div>`;
-      });
-      html += `<div class="habit-col">
-        <div class="habit-day-lbl" style="${isToday ? 'color:var(--accent)' : ''}">${DAY_LABELS[(i+1)%7]}</div>
-        ${pillars}
-      </div>`;
+  // ─── CREATINA ───
+  (function() {
+    const START_KEY = 'fd_creatina_start';
+    const TOTAL = 28;
+    let start = localStorage.getItem(START_KEY);
+    if (!start) {
+      // Default: started 2 days ago (day 2 = today)
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      start = d.toISOString().slice(0, 10);
+      localStorage.setItem(START_KEY, start);
     }
-    grid.innerHTML = html;
-  }
-
-  function renderHistorial() {
-    const container = document.getElementById('hist-container');
-    if (!container) return;
-    const today = new Date();
-    const todayStr = dateKey(today);
-    const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-    let html = '';
-    for (let i = 6; i >= 0; i--) {
-      const d = new Date(today);
-      d.setDate(today.getDate() - i);
-      const dk = dateKey(d);
-      const data = loadDay(dk);
-      const isFuture = dk > todayStr;
-      const isToday = dk === todayStr;
-      const label = isToday ? 'Hoy' : days[d.getDay()] + ' ' + d.getDate();
-      let dots = '';
-      PILLAR_ICONS.forEach((icon, pi) => {
-        const keys = PILLAR_KEYS[pi];
-        const done = keys.every(k => data[k] === 'done');
-        const any  = keys.some(k => data[k] === 'done');
-        let cls = 'hist-dot';
-        if (isFuture) cls += ' empty';
-        else if (done || any) cls += ' done';
-        else cls += ' miss';
-        dots += `<div class="${cls}" title="${icon}">${icon}</div>`;
-      });
-      html += `<div class="hist-row">
-        <div class="hist-date" style="${isToday ? 'color:var(--accent)' : ''}">${label}</div>
-        <div class="hist-dots">${dots}</div>
-      </div>`;
-    }
-    container.innerHTML = html;
-  }
-
-  renderTodayHabits();
-  renderWeekGrid();
-  renderHistorial();
-
-  // ======= CREATINA TRACKER =======
-  function initCreatina() {
-    let startDate = localStorage.getItem('creatina_start');
-    if (!startDate) {
-      startDate = '2026-04-04';
-      localStorage.setItem('creatina_start', startDate);
-    }
-    const start = new Date(startDate + 'T00:00:00');
-    const today = new Date(); today.setHours(0,0,0,0);
-    const days = Math.floor((today - start) / (1000*60*60*24)) + 1;
-    const isLoading = days <= 7;
-    const saturation = isLoading ? Math.min(100, Math.round(days / 7 * 100)) : 100;
-
-    const tankFill = document.getElementById('c-tank-fill');
-    const tankOverlay = document.getElementById('c-tank-overlay');
-    const satPct = document.getElementById('c-sat-pct');
-    const dayBadge = document.getElementById('c-day-badge');
-    const phaseLoad = document.getElementById('c-phase-carga');
-    const phaseMaint = document.getElementById('c-phase-mant');
-
-    if (tankFill) tankFill.style.height = Math.round(saturation / 100 * 92) + 'px';
-    if (tankOverlay) tankOverlay.textContent = saturation + '%';
-    if (satPct) satPct.textContent = saturation + '%';
-    if (dayBadge) {
-      dayBadge.textContent = isLoading
-        ? 'Carga — Día ' + days + ' de 7'
-        : 'Mantenimiento — Día ' + (days - 7);
-    }
-    if (phaseLoad) phaseLoad.classList.toggle('active', isLoading);
-    if (phaseMaint) phaseMaint.classList.toggle('active', !isLoading);
-
-    const dk = todayKey();
-    const doseData = JSON.parse(localStorage.getItem('creatina_doses_' + dk) || '{}');
-    ['d1','d2','d3','d4'].forEach(function(d) {
-      const btn = document.getElementById('c-dose-' + d);
-      if (!btn) return;
-      btn.classList.toggle('taken', !!doseData[d]);
-      btn.querySelector('.c-dose-check').textContent = doseData[d] ? '✓' : '○';
-    });
-  }
-
-  function toggleCreatinaDose(dose) {
-    const dk = todayKey();
-    const doseData = JSON.parse(localStorage.getItem('creatina_doses_' + dk) || '{}');
-    doseData[dose] = !doseData[dose];
-    localStorage.setItem('creatina_doses_' + dk, JSON.stringify(doseData));
-    initCreatina();
-  }
-
-  function resetCreatina() {
-    if (confirm('¿Reiniciar la fase de carga desde hoy?')) {
-      localStorage.setItem('creatina_start', todayKey());
-      initCreatina();
-    }
-  }
-
-  initCreatina();
+    const diff = Math.floor((new Date(TODAY) - new Date(start)) / 86400000) + 1;
+    const day = Math.max(1, Math.min(diff, TOTAL));
+    const pct = Math.round((day / TOTAL) * 100);
+    document.getElementById('cr-day').textContent = day;
+    document.getElementById('cr-pct').textContent = pct + '%';
+    document.getElementById('cr-bar').style.width = pct + '%';
+  })();
 </script>
-
 </body>
 </html>
