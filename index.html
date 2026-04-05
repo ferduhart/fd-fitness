@@ -809,6 +809,112 @@
       border-color: var(--accent);
       color: var(--accent);
     }
+
+    /* ---- MI PROGRESO ---- */
+    .streak-badge {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(239,68,68,0.08) 100%);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-radius: 10px; margin-top: 4px;
+    }
+    .streak-fire { font-size: 32px; line-height: 1; }
+    .streak-count { font-size: 22px; font-weight: 800; color: var(--warn); line-height: 1.1; }
+    .streak-lbl { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .week-bars-card {
+      margin-top: 10px; padding: 12px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .week-bars-hdr {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 10px;
+    }
+    .week-legend { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .kpi-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .kpi-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 8px; text-align: center;
+    }
+    .kpi-val { font-size: 18px; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .kpi-unit { font-size: 11px; font-weight: 400; color: var(--text-muted); }
+    .kpi-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-top: 3px; }
+
+    /* ---- CREATINA LOADING ---- */
+    .creatina-phase-row { display: flex; gap: 8px; margin-top: 6px; }
+    .c-phase {
+      flex: 1; padding: 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface2); text-align: center;
+    }
+    .c-phase.active { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
+    .c-phase-name {
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 4px;
+    }
+    .c-phase.active .c-phase-name { color: #a78bfa; }
+    .c-phase-dose { font-size: 18px; font-weight: 800; color: var(--text); }
+    .c-phase-desc { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+    .c-tank-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px; margin-top: 10px;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .c-tank {
+      width: 56px; height: 96px; border-radius: 10px;
+      border: 2px solid #a78bfa; position: relative;
+      background: var(--bg); flex-shrink: 0; overflow: hidden;
+    }
+    .c-tank-fill {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(180deg, #c4b5fd 0%, #7c3aed 100%);
+      border-radius: 0 0 8px 8px;
+      transition: height 1s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .c-tank-pct-overlay {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .c-tank-info { flex: 1; }
+    .c-sat-pct { font-size: 32px; font-weight: 800; color: #a78bfa; line-height: 1; }
+    .c-sat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .c-day-badge {
+      display: inline-block; margin-top: 8px;
+      font-size: 12px; font-weight: 700;
+      background: rgba(167,139,250,0.15); color: #a78bfa;
+      border: 1px solid rgba(167,139,250,0.3);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .c-doses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+    .c-dose-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; border-radius: 8px;
+      border: 1.5px solid var(--border); background: var(--surface2);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .c-dose-btn.taken { border-color: #a78bfa; background: rgba(167,139,250,0.1); }
+    .c-dose-ico { font-size: 18px; }
+    .c-dose-txt { flex: 1; }
+    .c-dose-name { font-size: 12px; font-weight: 600; color: var(--text); }
+    .c-dose-time { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+    .c-dose-check { font-size: 14px; color: var(--text-muted); }
+    .c-dose-btn.taken .c-dose-check { color: #a78bfa; }
+    .c-reset-btn {
+      width: 100%; margin-top: 10px; padding: 8px; border-radius: 8px;
+      border: 1px solid var(--border); background: none;
+      color: var(--text-muted); font-size: 11px; cursor: pointer;
+    }
+    .c-reset-btn:hover { background: var(--surface2); }
+
+    /* ---- MEDICAMENTOS ---- */
+    .meds-section { margin-top: 12px; }
+    .meds-header {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--danger); margin-bottom: 6px;
+      padding: 6px 0; border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -853,7 +959,7 @@
         <div class="log-ico">💪</div>
         <div class="log-info">
           <div class="log-name">Fuerza — Macro series ×4</div>
-          <div class="log-detail">Press pecho máq. (5→4→3 series) · Pecho banco inclinado · Bíceps · Tríceps</div>
+          <div class="log-detail">Press pecho máq. (5→4→3) · Banco inclinado manc. 4×12 · Bíceps 4×12 · Tríceps 4×12</div>
         </div>
         <div class="log-val">×4</div>
       </div>
@@ -1303,6 +1409,145 @@
   </div>
 </section>
 
+<!-- ======= MI PROGRESO ======= -->
+<section>
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-title amber">Mi Progreso 🔥</span>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="streak-badge">
+      <div class="streak-fire">🔥</div>
+      <div>
+        <div class="streak-count">2 días consecutivos</div>
+        <div class="streak-lbl">Racha activa · Jue + Vie</div>
+      </div>
+    </div>
+    <div class="week-bars-card">
+      <div class="week-bars-hdr">Actividad últimos 7 días · minutos</div>
+      <svg viewBox="0 0 260 80" width="100%" style="display:block">
+        <line x1="0" y1="60" x2="260" y2="60" stroke="#1e2d45" stroke-width="1"/>
+        <!-- Sáb 29: 75min fuerza+cardio -->
+        <rect x="7" y="5" width="24" height="55" rx="3" fill="#f97316" opacity="0.85"/>
+        <text x="19" y="3.5" text-anchor="middle" font-size="7" fill="#f97316" font-weight="700">75</text>
+        <!-- Dom 30: rest -->
+        <text x="56" y="50" text-anchor="middle" font-size="9" fill="#334155">—</text>
+        <!-- Lun 31: 35min cardio -->
+        <rect x="81" y="34" width="24" height="26" rx="3" fill="#3b82f6" opacity="0.85"/>
+        <text x="93" y="32" text-anchor="middle" font-size="7" fill="#93c5fd" font-weight="700">35</text>
+        <!-- Mar 1: 45min intervals -->
+        <rect x="118" y="27" width="24" height="33" rx="3" fill="#f97316" opacity="0.85"/>
+        <text x="130" y="25" text-anchor="middle" font-size="7" fill="#fed7aa" font-weight="700">45</text>
+        <!-- Mié 2: 30min cardio -->
+        <rect x="155" y="38" width="24" height="22" rx="3" fill="#3b82f6" opacity="0.85"/>
+        <text x="167" y="36" text-anchor="middle" font-size="7" fill="#93c5fd" font-weight="700">30</text>
+        <!-- Jue 3: rest -->
+        <text x="204" y="50" text-anchor="middle" font-size="9" fill="#334155">—</text>
+        <!-- Vie 4 hoy: 60min cardio+fuerza -->
+        <rect x="229" y="16" width="24" height="44" rx="3" fill="#f97316"/>
+        <text x="241" y="14" text-anchor="middle" font-size="7" fill="#fdba74" font-weight="700">60</text>
+        <!-- Labels -->
+        <text x="19" y="75" text-anchor="middle" font-size="9" fill="#475569" font-weight="600">S</text>
+        <text x="56" y="75" text-anchor="middle" font-size="9" fill="#334155">D</text>
+        <text x="93" y="75" text-anchor="middle" font-size="9" fill="#475569">L</text>
+        <text x="130" y="75" text-anchor="middle" font-size="9" fill="#475569">M</text>
+        <text x="167" y="75" text-anchor="middle" font-size="9" fill="#475569">X</text>
+        <text x="204" y="75" text-anchor="middle" font-size="9" fill="#334155">J</text>
+        <text x="241" y="75" text-anchor="middle" font-size="9" fill="#3b82f6" font-weight="700">V★</text>
+      </svg>
+      <div class="week-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Cardio</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>Fuerza/Mixto</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Recovery</div>
+      </div>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-val">2 <span class="kpi-unit">km</span></div>
+        <div class="kpi-lbl">km semana</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">60 <span class="kpi-unit">min</span></div>
+        <div class="kpi-lbl">total hoy</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">132 <span class="kpi-unit">bpm</span></div>
+        <div class="kpi-lbl">HR prom.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CREATINA LOADING ======= -->
+<section>
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-title" style="color:#a78bfa">Creatina — Carga 💊</span>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <div class="creatina-phase-row">
+      <div class="c-phase active" id="c-phase-carga">
+        <div class="c-phase-name">Fase Carga</div>
+        <div class="c-phase-dose">20g/día</div>
+        <div class="c-phase-desc">4 × 5g · 5–7 días</div>
+      </div>
+      <div class="c-phase" id="c-phase-mant">
+        <div class="c-phase-name">Mantenimiento</div>
+        <div class="c-phase-dose">5g/día</div>
+        <div class="c-phase-desc">indefinido</div>
+      </div>
+    </div>
+    <div class="c-tank-row">
+      <div class="c-tank">
+        <div class="c-tank-fill" id="c-tank-fill" style="height:0px"></div>
+        <div class="c-tank-pct-overlay" id="c-tank-overlay">0%</div>
+      </div>
+      <div class="c-tank-info">
+        <div class="c-sat-pct" id="c-sat-pct">0%</div>
+        <div class="c-sat-lbl">Saturación muscular</div>
+        <div class="c-day-badge" id="c-day-badge">Carga — Día 1 de 7</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:8px;">Al 100%: músculos saturados de creatina-fosfato</div>
+      </div>
+    </div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);margin:12px 0 6px;">Dosis hoy (4 × 5g = 20g)</div>
+    <div class="c-doses-grid">
+      <div class="c-dose-btn" id="c-dose-d1" onclick="toggleCreatinaDose('d1')">
+        <div class="c-dose-ico">🌅</div>
+        <div class="c-dose-txt">
+          <div class="c-dose-name">Mañana</div>
+          <div class="c-dose-time">Ayunas</div>
+        </div>
+        <div class="c-dose-check">○</div>
+      </div>
+      <div class="c-dose-btn" id="c-dose-d2" onclick="toggleCreatinaDose('d2')">
+        <div class="c-dose-ico">☀️</div>
+        <div class="c-dose-txt">
+          <div class="c-dose-name">Mediodía</div>
+          <div class="c-dose-time">Con comida</div>
+        </div>
+        <div class="c-dose-check">○</div>
+      </div>
+      <div class="c-dose-btn" id="c-dose-d3" onclick="toggleCreatinaDose('d3')">
+        <div class="c-dose-ico">💪</div>
+        <div class="c-dose-txt">
+          <div class="c-dose-name">Post-workout</div>
+          <div class="c-dose-time">Con carbs</div>
+        </div>
+        <div class="c-dose-check">○</div>
+      </div>
+      <div class="c-dose-btn" id="c-dose-d4" onclick="toggleCreatinaDose('d4')">
+        <div class="c-dose-ico">🌙</div>
+        <div class="c-dose-txt">
+          <div class="c-dose-name">Noche</div>
+          <div class="c-dose-time">Con cena</div>
+        </div>
+        <div class="c-dose-check">○</div>
+      </div>
+    </div>
+    <button class="c-reset-btn" onclick="resetCreatina()">↺ Reiniciar fase de carga</button>
+  </div>
+</section>
+
 <!-- ======= SECCIÓN ZONAS HR ======= -->
 <section>
   <div class="section-header" onclick="toggle(this)">
@@ -1376,10 +1621,26 @@
         <div class="supp-dose">200mg</div>
       </div>
       <div class="supp-row">
+        <div class="supp-time">Mañana</div>
+        <div class="supp-info">
+          <div class="supp-name">Lion's Mane</div>
+          <div class="supp-detail">Función cognitiva · NGF · en ayunas o con desayuno</div>
+        </div>
+        <div class="supp-dose" style="color:var(--text-muted);font-size:11px;">configurar dosis</div>
+      </div>
+      <div class="supp-row">
+        <div class="supp-time">Mañana</div>
+        <div class="supp-info">
+          <div class="supp-name">Cordyceps</div>
+          <div class="supp-detail">Energía · VO2 max · pre-workout o mañana</div>
+        </div>
+        <div class="supp-dose" style="color:var(--text-muted);font-size:11px;">configurar dosis</div>
+      </div>
+      <div class="supp-row">
         <div class="supp-time">Post</div>
         <div class="supp-info">
           <div class="supp-name">Creatina monohidrato</div>
-          <div class="supp-detail">Con agua · todos los días sin excepción</div>
+          <div class="supp-detail">Con agua · ver tracker de carga para fase actual</div>
         </div>
         <div class="supp-dose">5g</div>
       </div>
@@ -1390,6 +1651,27 @@
           <div class="supp-detail">Antes de dormir · sueño y recuperación muscular</div>
         </div>
         <div class="supp-dose">400mg</div>
+      </div>
+    </div>
+    <div class="meds-section">
+      <div class="meds-header">💊 Medicamentos</div>
+      <div class="supps-list">
+        <div class="supp-row" style="border-color:rgba(239,68,68,0.25)">
+          <div class="supp-time" style="color:var(--danger)">AM</div>
+          <div class="supp-info">
+            <div class="supp-name">Levetiracetam</div>
+            <div class="supp-detail">Con desayuno · antiepiléptico · no saltear</div>
+          </div>
+          <div class="supp-dose" style="color:var(--danger)">1g</div>
+        </div>
+        <div class="supp-row" style="border-color:rgba(239,68,68,0.25)">
+          <div class="supp-time" style="color:var(--danger)">PM</div>
+          <div class="supp-info">
+            <div class="supp-name">Levetiracetam</div>
+            <div class="supp-detail">Con cena · 12h después de la dosis AM</div>
+          </div>
+          <div class="supp-dose" style="color:var(--danger)">1g</div>
+        </div>
       </div>
     </div>
     <div class="note-card" style="margin-top:10px;">
@@ -1762,6 +2044,64 @@
   renderTodayHabits();
   renderWeekGrid();
   renderHistorial();
+
+  // ======= CREATINA TRACKER =======
+  function initCreatina() {
+    let startDate = localStorage.getItem('creatina_start');
+    if (!startDate) {
+      startDate = '2026-04-04';
+      localStorage.setItem('creatina_start', startDate);
+    }
+    const start = new Date(startDate + 'T00:00:00');
+    const today = new Date(); today.setHours(0,0,0,0);
+    const days = Math.floor((today - start) / (1000*60*60*24)) + 1;
+    const isLoading = days <= 7;
+    const saturation = isLoading ? Math.min(100, Math.round(days / 7 * 100)) : 100;
+
+    const tankFill = document.getElementById('c-tank-fill');
+    const tankOverlay = document.getElementById('c-tank-overlay');
+    const satPct = document.getElementById('c-sat-pct');
+    const dayBadge = document.getElementById('c-day-badge');
+    const phaseLoad = document.getElementById('c-phase-carga');
+    const phaseMaint = document.getElementById('c-phase-mant');
+
+    if (tankFill) tankFill.style.height = Math.round(saturation / 100 * 92) + 'px';
+    if (tankOverlay) tankOverlay.textContent = saturation + '%';
+    if (satPct) satPct.textContent = saturation + '%';
+    if (dayBadge) {
+      dayBadge.textContent = isLoading
+        ? 'Carga — Día ' + days + ' de 7'
+        : 'Mantenimiento — Día ' + (days - 7);
+    }
+    if (phaseLoad) phaseLoad.classList.toggle('active', isLoading);
+    if (phaseMaint) phaseMaint.classList.toggle('active', !isLoading);
+
+    const dk = todayKey();
+    const doseData = JSON.parse(localStorage.getItem('creatina_doses_' + dk) || '{}');
+    ['d1','d2','d3','d4'].forEach(function(d) {
+      const btn = document.getElementById('c-dose-' + d);
+      if (!btn) return;
+      btn.classList.toggle('taken', !!doseData[d]);
+      btn.querySelector('.c-dose-check').textContent = doseData[d] ? '✓' : '○';
+    });
+  }
+
+  function toggleCreatinaDose(dose) {
+    const dk = todayKey();
+    const doseData = JSON.parse(localStorage.getItem('creatina_doses_' + dk) || '{}');
+    doseData[dose] = !doseData[dose];
+    localStorage.setItem('creatina_doses_' + dk, JSON.stringify(doseData));
+    initCreatina();
+  }
+
+  function resetCreatina() {
+    if (confirm('¿Reiniciar la fase de carga desde hoy?')) {
+      localStorage.setItem('creatina_start', todayKey());
+      initCreatina();
+    }
+  }
+
+  initCreatina();
 </script>
 
 </body>
