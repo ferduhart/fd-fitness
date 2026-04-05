@@ -928,15 +928,21 @@
     </div>
   </div>
   <div class="header-sub">403 runs · 3,078 km históricos · Objetivo: 21K</div>
+  <div id="summary-line" style="margin-top:8px;font-size:12px;color:var(--text-dim);display:flex;gap:12px;flex-wrap:wrap;">
+    <span id="summary-streak">🔥 2 días</span>
+    <span>💪 Hoy: Pull+Piernas</span>
+    <span id="summary-creatina">💊 Creatina día 2/7</span>
+    <span>❤️ HR avg 141</span>
+  </div>
 </header>
 
 <!-- ======= LOG HOY — VIE 4 ABR ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title" style="color:#a78bfa">Log — Vie 4 Abr ✓</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Lo que hiciste hoy 💪</div>
     <div class="log-card">
       <div class="log-row">
@@ -1238,11 +1244,11 @@
 
 <!-- ======= SECCIÓN SEMANA ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title">Esta semana</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="week-grid">
 
       <div class="day-row">
@@ -1317,11 +1323,11 @@
 
 <!-- ======= SECCIÓN PROGRESO ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title amber">Progreso</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-label">Runs 2026</div>
@@ -1411,16 +1417,16 @@
 
 <!-- ======= MI PROGRESO ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title amber">Mi Progreso 🔥</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="streak-badge">
       <div class="streak-fire">🔥</div>
       <div>
-        <div class="streak-count">2 días consecutivos</div>
-        <div class="streak-lbl">Racha activa · Jue + Vie</div>
+        <div class="streak-count" id="streak-count-text">2 días consecutivos</div>
+        <div class="streak-lbl" id="streak-lbl-text">Racha activa · Jue + Vie</div>
       </div>
     </div>
     <div class="week-bars-card">
@@ -1480,11 +1486,11 @@
 
 <!-- ======= CREATINA LOADING ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title" style="color:#a78bfa">Creatina — Carga 💊</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="creatina-phase-row">
       <div class="c-phase active" id="c-phase-carga">
         <div class="c-phase-name">Fase Carga</div>
@@ -1550,11 +1556,11 @@
 
 <!-- ======= SECCIÓN ZONAS HR ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title">Zonas HR</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div style="font-size:11px;color:var(--text-muted);padding:4px 0 10px;">Calibradas a HR max 188 bpm</div>
     <div class="zones-list">
       <div class="zone-row">
@@ -1606,11 +1612,11 @@
 
 <!-- ======= SECCIÓN SUPLEMENTOS ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title green">Suplementos</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="supps-list">
       <div class="supp-row">
         <div class="supp-time">Pre</div>
@@ -1682,11 +1688,11 @@
 
 <!-- ======= SECCIÓN RECUPERACIÓN ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title amber">Recuperación</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div class="recovery-steps">
       <div class="step-row">
         <div class="step-num">1</div>
@@ -1840,11 +1846,11 @@
 
 <!-- ======= HISTORIAL 7 DÍAS ======= -->
 <section>
-  <div class="section-header" onclick="toggle(this)">
+  <div class="section-header collapsed" onclick="toggle(this)">
     <span class="section-title amber">Historial 7 días</span>
     <span class="chevron">▾</span>
   </div>
-  <div class="section-body">
+  <div class="section-body collapsed-body">
     <div style="font-size:11px;color:var(--text-muted);padding:4px 0 8px;">Pilares completados por día</div>
     <div id="hist-container"><!-- JS --></div>
   </div>
@@ -1868,6 +1874,38 @@
     const body = header.nextElementSibling;
     header.classList.toggle('collapsed');
     body.classList.toggle('collapsed-body');
+  }
+
+  function calcStreak() {
+    const DAY_MS = 86400000;
+    let streak = 0;
+    const now = new Date();
+    // Check today first, then go back day by day
+    for (let i = 0; i <= 365; i++) {
+      const d = new Date(now.getTime() - i * DAY_MS);
+      const dk = d.toISOString().split('T')[0];
+      const data = (() => { try { return JSON.parse(localStorage.getItem('habits_' + dk)) || {}; } catch(e) { return {}; } })();
+      if (data['ejercicio'] === 'done') {
+        streak++;
+      } else {
+        // Allow skipping today if not yet marked
+        if (i === 0) continue;
+        break;
+      }
+    }
+    // Fallback: if no localStorage data at all, use Strava-based default (2 days: 3 Apr + 4 Apr)
+    if (streak === 0) streak = 2;
+    return streak;
+  }
+
+  function updateStreakUI() {
+    const streak = calcStreak();
+    const countEl = document.getElementById('streak-count-text');
+    const lblEl = document.getElementById('streak-lbl-text');
+    const summaryEl = document.getElementById('summary-streak');
+    if (countEl) countEl.textContent = streak + (streak === 1 ? ' día consecutivo' : ' días consecutivos');
+    if (lblEl) lblEl.textContent = streak > 0 ? 'Racha activa 🔥' : 'Sin racha activa';
+    if (summaryEl) summaryEl.textContent = '🔥 ' + streak + (streak === 1 ? ' día' : ' días');
   }
 
   // ======= HABIT TRACKER =======
@@ -1901,6 +1939,7 @@
     renderTodayHabits();
     renderWeekGrid();
     renderHistorial();
+    updateStreakUI();
   }
 
   function updateProgressRing() {
@@ -2044,6 +2083,7 @@
   renderTodayHabits();
   renderWeekGrid();
   renderHistorial();
+  updateStreakUI();
 
   // ======= CREATINA TRACKER =======
   function initCreatina() {
