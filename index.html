@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FD Fitness">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e1a'/><rect x='18' y='44' width='64' height='12' rx='6' fill='%233b82f6'/><circle cx='18' cy='50' r='14' fill='none' stroke='%233b82f6' stroke-width='5'/><circle cx='82' cy='50' r='14' fill='none' stroke='%233b82f6' stroke-width='5'/></svg>">
+  <link rel="manifest" href="manifest.json">
   <title>FD Fitness</title>
   <style>
     :root {
@@ -708,6 +713,102 @@
       transition: background 0.15s, border-color 0.15s;
     }
     .theme-btn:hover { background: var(--surface2); }
+
+    /* SMOOTH COLLAPSE */
+    .section-body {
+      transition: max-height 0.35s ease, padding-bottom 0.25s ease, padding-top 0.25s ease;
+      max-height: 3000px;
+    }
+    .section-body.collapsed-body {
+      max-height: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      overflow: hidden;
+    }
+
+    /* HERO SECTION — mañana */
+    section.hero-section > .section-header {
+      background: linear-gradient(135deg, #0c1f3f 0%, #0e2b1a 100%);
+      border-color: #1e3a5f;
+    }
+    section.hero-section > .section-header:hover {
+      background: linear-gradient(135deg, #0f2a50 0%, #112e1e 100%);
+    }
+    section.hero-section > .section-body {
+      background: linear-gradient(180deg, #0a1928 0%, var(--surface) 80%);
+      border-color: #1e3a5f;
+    }
+
+    /* HCK TOUCH TARGETS + ANIMATIONS */
+    .hck {
+      min-height: 48px !important;
+      min-width: 48px !important;
+      border-radius: 10px !important;
+      font-size: 13px !important;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .hck.checked {
+      transform: scale(1.08);
+    }
+    .hck.pop {
+      animation: hck-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes hck-pop {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.25); }
+      100% { transform: scale(1.08); }
+    }
+
+    /* HABIT DOT TOUCH */
+    .habit-dot { min-height: 36px !important; min-width: 36px !important; }
+
+    /* PROGRESS RING */
+    .progress-ring-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0 6px;
+    }
+    .progress-ring-svg { flex-shrink: 0; }
+    .progress-ring-label {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .progress-ring-pct {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent2);
+      line-height: 1;
+    }
+    .progress-ring-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* EXPORT BUTTON */
+    .export-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 12px;
+      margin-top: 12px;
+      width: 100%;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .export-btn:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -795,9 +896,9 @@
 </section>
 
 <!-- ======= SECCIÓN HOY ======= -->
-<section>
+<section class="hero-section">
   <div class="section-header" onclick="toggle(this)">
-    <span class="section-title green">Hoy</span>
+    <span class="section-title green">Mañana — Sáb 5 Abr</span>
     <span class="chevron">▾</span>
   </div>
   <div class="section-body">
@@ -1356,6 +1457,23 @@
     <span class="chevron">▾</span>
   </div>
   <div class="section-body">
+    <!-- PROGRESS RING -->
+    <div class="progress-ring-wrap">
+      <svg class="progress-ring-svg" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="26" fill="none" stroke="var(--border)" stroke-width="5"/>
+        <circle id="progress-ring-circle" cx="32" cy="32" r="26" fill="none"
+          stroke="var(--accent2)" stroke-width="5" stroke-linecap="round"
+          stroke-dasharray="163.36" stroke-dashoffset="163.36"
+          transform="rotate(-90 32 32)"
+          style="transition: stroke-dashoffset 0.5s ease;"/>
+        <text id="progress-ring-text" x="32" y="37" text-anchor="middle"
+          font-size="14" font-weight="800" fill="var(--accent2)">0%</text>
+      </svg>
+      <div>
+        <div class="progress-ring-pct" id="progress-ring-pct">0 / 7</div>
+        <div class="progress-ring-sub">pilares hoy</div>
+      </div>
+    </div>
     <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:4px 0 6px;">Semana actual</div>
     <div class="habit-grid" id="habit-week-grid"><!-- JS --></div>
     <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:14px;margin-bottom:2px;">Hoy — <span id="habit-today-label"></span></div>
@@ -1434,6 +1552,7 @@
         </div>
       </div>
     </div>
+    <button class="export-btn" onclick="exportData()">⬇ Export Data — JSON</button>
   </div>
 </section>
 
@@ -1465,14 +1584,8 @@
 
   function toggle(header) {
     const body = header.nextElementSibling;
-    const isCollapsed = header.classList.contains('collapsed');
-    if (isCollapsed) {
-      header.classList.remove('collapsed');
-      body.style.display = '';
-    } else {
-      header.classList.add('collapsed');
-      body.style.display = 'none';
-    }
+    header.classList.toggle('collapsed');
+    body.classList.toggle('collapsed-body');
   }
 
   // ======= HABIT TRACKER =======
@@ -1496,9 +1609,70 @@
     const data = loadDay(dk);
     data[key] = data[key] === 'done' ? null : 'done';
     saveDay(dk, data);
+    // pop animation
+    const el = document.getElementById('hck-' + key);
+    if (el && data[key] === 'done') {
+      el.classList.remove('pop');
+      void el.offsetWidth; // reflow
+      el.classList.add('pop');
+    }
     renderTodayHabits();
     renderWeekGrid();
     renderHistorial();
+  }
+
+  function updateProgressRing() {
+    const dk = todayKey();
+    const data = loadDay(dk);
+    const total = PILLAR_KEYS.length;
+    const done = PILLAR_KEYS.filter(keys => keys.some(k => data[k] === 'done')).length;
+    const pct = total > 0 ? Math.round(done / total * 100) : 0;
+    const circumference = 2 * Math.PI * 26; // r=26 → ~163.36
+    const offset = circumference - (pct / 100) * circumference;
+    const circle = document.getElementById('progress-ring-circle');
+    const text   = document.getElementById('progress-ring-text');
+    const pctEl  = document.getElementById('progress-ring-pct');
+    if (circle) circle.style.strokeDashoffset = offset.toFixed(2);
+    if (circle) circle.style.stroke = pct === 100 ? 'var(--accent2)' : pct >= 50 ? 'var(--warn)' : 'var(--accent)';
+    if (text)   text.textContent = pct + '%';
+    if (pctEl)  pctEl.textContent = done + ' / ' + total;
+  }
+
+  function exportData() {
+    const KEY_MAP = {
+      ejercicio: 'exercise', sauna: 'sauna', frio: 'cold',
+      leve_am: 'levetiracetam_am', leve_pm: 'levetiracetam_pm',
+      creatina: 'creatine', magnesio: 'magnesium', cafeina: 'caffeine',
+      trabajo: 'work', personal: 'personal'
+    };
+    const records = [];
+    // Collect all stored habit keys
+    const allKeys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('habits_')) allKeys.push(k);
+    }
+    allKeys.sort();
+    allKeys.forEach(lsKey => {
+      const date = lsKey.replace('habits_', '');
+      const raw = loadDay(date);
+      const habits = {};
+      Object.entries(KEY_MAP).forEach(([src, dest]) => {
+        habits[dest] = raw[src] === 'done';
+      });
+      // extras not in tracker default false
+      habits.family = false;
+      habits.partner = false;
+      records.push({ date, habits });
+    });
+    const json = JSON.stringify(records, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'fd-fitness-habits-' + todayKey() + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   function renderTodayHabits() {
@@ -1512,6 +1686,7 @@
       const el = document.getElementById('hck-' + k);
       if (el) el.classList.toggle('checked', data[k] === 'done');
     });
+    updateProgressRing();
   }
 
   function renderWeekGrid() {
